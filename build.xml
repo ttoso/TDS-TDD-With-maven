@@ -1,0 +1,92 @@
+<project name="antroma-practica4" default="compilar" basedir=".">
+	<description>
+		Fichero build de Ant con los objetivos definidos en el enunciado de la practica
+	</description>
+
+	<!-- Properties -->
+	<property name="jacocoagent" location="target/coverage/jacoco.exec" />
+	<property environment="env"/>
+	<property name="SONAR_USER_TOKEN" value="e0591cee4f7d7243465bf26e3367278459272da2"/>
+
+	<!-- Condicion para comprobar la existencia del agente -->
+	<condition property="jacoco-agent-present">
+		<available file="${jacocoagent}" />
+	</condition>
+
+	<!-- Objetivos -->
+
+	<!-- Objetivo compilar -->
+	<target name="compilar" description="obtiene dependencias y compila" depends="limpiar, compilar_unix" />
+	<target name="compilar_unix" description="compilar unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn compile test-compile'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo ejecutarTodo -->
+	<target name="ejecutarTodo" depends="ejecutarTestsTDDyCajaNegra, ejecutarTestEnAislamiento, ejecutarPruebasSecuencia" />
+
+	<!-- Objetivo ejecutarTestsTDD -->
+	<target name="ejecutarTestsTDDyCajaNegra" description="pruebas TDD y de caja negra" depends="ejecutarTestsTDDyCajaNegra_unix" />
+	<target name="ejecutarTestsTDDyCajaNegra_unix" description="ejecutarTestsTDDyCajaNegra unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn test -P Unit'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo ejecutarTestEnAislamiento -->
+	<target name="ejecutarTestEnAislamiento" description="pruebas de caja blanca en aislamiento" depends="ejecutarTestEnAislamiento_unix" />
+	<target name="ejecutarTestEnAislamiento_unix" description="ejecutarTestEnAislamiento unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn test -P Isolation'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo ejecutarPruebasSecuencia -->
+	<target name="ejecutarPruebasSecuencia" description="caja negra, pruebas de secuencia" depends="ejecutarPruebasSecuencia_unix" />
+	<target name="ejecutarPruebasSecuencia_unix" description="ejecutarPruebasSecuencia unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn test -P Sequences'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo obtenerInformeCobertura -->
+	<target name="obtenerInformeCobertura" description="obtener informes de cobertura" depends="compilar, obtenerInformeCobertura_unix" />
+	<target name="obtenerInformeCobertura_unix" description="obtenerInformeCobertura Unix" depends="prepare-agent_unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn compile test-compile'" />
+		</exec>
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn -X -Djacoco.dataFile=${jacocoagent} -Djacoco.outputDirectory=./jacoco_ut org.jacoco:jacoco-maven-plugin:report'" />
+		</exec>
+	</target>
+	<target name="prepare-agent_unix" unless="jacoco-agent-present">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn -Djacoco.destFile=${jacocoagent} clean org.jacoco:jacoco-maven-plugin:0.7.8:prepare-agent install'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo medidas -->
+	<target name="medidas" description="obtener informe sobre medidas" depends="obtenerInformeCobertura, medidas_unix" />
+	<target name="medidas_unix" description="medidas Unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn -P Unit,Integration jxr:jxr pmd:pmd sonar:sonar -Dsonar.host.url=https://sonarqube.inf.uva.es/ -Dsonar.login=${SONAR_USER_TOKEN.value} -Dsonar.analysis.mode=publish -Dsonar.issuesReport.console.enable=true -Dsonar.jacoco.reportPath=target/coverage/jacoco.exec -Dsonar.junit.reportPaths=target/surefire-reports'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo documentar -->
+	<target name="documentar" description="genera el site de la documentación del proyecto" depends="documentar_unix" />
+	<target name="documentar_unix" description="documentar en Unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn javadoc:javadoc'" />
+		</exec>
+	</target>
+
+	<!-- Objetivo limpiar -->
+	<target name="limpiar" description="Elimina archivos innecesarios" depends="limpiar_unix" />
+	<target name="limpiar_unix" description="limpiar en Unix">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn clean'" />
+		</exec>
+	</target>
+</project>
