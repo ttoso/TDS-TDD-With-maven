@@ -1,4 +1,4 @@
-package uva.tds.pr2.equipo10;
+package uva.tds.pr4.antroma;
 
 public interface Isolation {
 
