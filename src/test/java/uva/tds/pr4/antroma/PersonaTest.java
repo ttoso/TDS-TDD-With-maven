@@ -269,6 +269,28 @@ public class PersonaTest {
 	}
 	
 	
+	@Test
+	public void addAmigoCorrectoTest() {
+		fail("Quitar en implementacion");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.addAmigo(p2);
+		
+		assertNotNull(p2);
+		assertTrue(!p.isAmigo(p2));
+		assertEquals(p2, p.getConocidos()[0]);
+		
+	}
+	
+
+	
 	
 
 }

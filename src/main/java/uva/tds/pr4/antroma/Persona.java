@@ -101,4 +101,9 @@ public class Persona {
 		return false;
 	}
 
+	public void addAmigo(Persona p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
