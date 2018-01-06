@@ -1,8 +1,13 @@
 package uva.tds.pr4.antroma;
-
+/**
+ * Implementacion simple de una persona con amigos y conocidos
+ * 
+ * @author toso
+ *
+ */
 public class Persona {
 
-	public Persona(Persona[] amigos, Persona[] conocidos) {
+	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -12,6 +17,16 @@ public class Persona {
 	}
 
 	public Object[] getConocidos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getId() {
 		// TODO Auto-generated method stub
 		return null;
 	}
