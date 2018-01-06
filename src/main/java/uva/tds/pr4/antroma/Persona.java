@@ -7,8 +7,7 @@ package uva.tds.pr4.antroma;
  *
  */
 public class Persona {
-	
-	
+
 	/**
 	 * Constructor de una Persona
 	 * 
@@ -20,15 +19,15 @@ public class Persona {
 	 * @param amigos
 	 *            Array de los amigos de la persona Debe ser correcto: No nulo
 	 * @param conocidos
-	 *            Array de los conocidos de la persona. Debe ser correcto: No
-	 *            nulo
+	 *            Array de los conocidos de la persona, los amigos tambien se
+	 *            contarán como conocidos. Debe ser correcto: No nulo
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
 	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos) {
 		// TODO Auto-generated constructor stub
-		
+
 	}
 
 	public Persona[] getAmigos() {
@@ -52,6 +51,7 @@ public class Persona {
 	}
 
 	/**
+	 * Comprueba si la persona que se le pasa es amigo o no
 	 * 
 	 * @param p
 	 *            Persona de la que se desea saber si se es amigo o no. Debe ser
@@ -68,16 +68,27 @@ public class Persona {
 		return false;
 	}
 
-	public void addConocido(Persona p2) {
+	/**
+	 * Añade un unievo conocido
+	 * 
+	 * @param p
+	 *            persona que pasará a ser un conocido. Debe ser correcta, no
+	 *            nulo, no ser ya conocido.
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 */
+	public void addConocido(Persona p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
+	 * Comprueba si la parsona que se le pasa es conocido o no
 	 * 
 	 * @param p
-	 *            Persona de la que se desea saber si se es conocido o no. Debe ser
-	 *            correcta: no nula.
+	 *            Persona de la que se desea saber si se es conocido o no. Debe
+	 *            ser correcta: no nula.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
