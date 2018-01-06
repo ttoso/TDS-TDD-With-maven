@@ -29,22 +29,37 @@ public class Persona {
 		// TODO Auto-generated constructor stub
 
 	}
-
+	/**
+	 * Devuelve los amigos de la persona
+	 * @return un array de Personas que serán los amigos.
+	 */
 	public Persona[] getAmigos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Devuelve los conocidos de la persona
+	 * @returnun array de Personas que serán los conocidos.
+	 */
 	public Persona[] getConocidos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Devuelve el nombre de la persona
+	 * @return un string que será el nombre de la persona.
+	 */
 	public String getNombre() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Devuelve el identificador de la persona
+	 * @return un entero que será el identificador de la persona.
+	 */
 	public int getId() {
 		// TODO Auto-generated method stub
 		return 0;
