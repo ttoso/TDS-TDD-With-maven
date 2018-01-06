@@ -134,7 +134,6 @@ public class PersonaTest {
 		
 
 		assertTrue(p.isAmigo(p2));
-		assertNotNull(p2);
 		
 		
 	}
@@ -152,7 +151,6 @@ public class PersonaTest {
 		
 		
 		assertFalse(p.isAmigo(p2));
-		assertNotNull(p2);
 		
 	}
 	
@@ -184,7 +182,6 @@ public class PersonaTest {
 		
 
 		assertTrue(p.isConocido(p2));
-		assertNotNull(p2);
 		
 		
 	}
@@ -202,7 +199,6 @@ public class PersonaTest {
 		
 		
 		assertFalse(p.isConocido(p2));
-		assertNotNull(p2);
 		
 	}
 	
@@ -235,8 +231,6 @@ public class PersonaTest {
 		
 		p.addConocido(p2);
 		
-		assertNotNull(p2);
-		assertTrue(!p.isConocido(p2));
 		assertEquals(p2, p.getConocidos()[0]);
 		
 	}
@@ -284,9 +278,6 @@ public class PersonaTest {
 		
 		p.addAmigo(p2);
 		
-		assertNotNull(p2);
-		assertTrue(!p.isAmigo(p2));
-		assertTrue(p.isConocido(p2));
 		assertEquals(p2, p.getAmigos()[0]);
 		
 	}
@@ -334,6 +325,7 @@ public class PersonaTest {
 
 	@Test
 	public void removeAmigoCorrectoTest() {
+		fail("Quitar en implementacion");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
@@ -346,7 +338,57 @@ public class PersonaTest {
 		
 		p.removeAmigo(p2);
 		
+		assertNotEquals(p2, p.getAmigos()[0]);
+		
+	}
 	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void removeAmigoPersonaNulaTest() {
+		fail("Quitar en implementacion");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		amigos[0] = p2;
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.removeAmigo(null);
+		
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void removeAmigoPersonaNoEnAmigosTest() {
+		fail("Quitar en implementacion");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.removeAmigo(p2);
+		
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void removeAmigoPersonaNoEnTest() {
+		fail("Quitar en implementacion");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.removeAmigo(p2);
 		
 	}
 	
