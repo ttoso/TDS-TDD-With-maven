@@ -279,13 +279,15 @@ public class PersonaTest {
 
 		
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		conocidos[0] = p2;
 		Persona p = new Persona(nombre, id, amigos, conocidos);
 		
 		p.addAmigo(p2);
 		
 		assertNotNull(p2);
 		assertTrue(!p.isAmigo(p2));
-		assertEquals(p2, p.getConocidos()[0]);
+		assertTrue(p.isConocido(p2));
+		assertEquals(p2, p.getAmigos()[0]);
 		
 	}
 	
@@ -296,14 +298,15 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		conocidos[0] = p2;
+		Persona p = new Persona(nombre, id, amigos, conocidos);
 		
 		p.addAmigo(null);	
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void addAmigoPersonaConocidaPreviamenteTest() {
+	public void addAmigoPersonaAmigaPreviamenteTest() {
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
@@ -316,6 +319,18 @@ public class PersonaTest {
 		p.addAmigo(p2);	
 	}
 	
+	@Test (expected = IllegalArgumentException.class)
+	public void addAmigoPersonaNoEnConocidosTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.addAmigo(p2);	
+	}
 
 	
 	

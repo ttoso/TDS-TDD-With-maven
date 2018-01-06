@@ -69,7 +69,7 @@ public class Persona {
 	}
 
 	/**
-	 * Añade un unievo conocido
+	 * Añade un nuevo conocido
 	 * 
 	 * @param p
 	 *            persona que pasará a ser un conocido. Debe ser correcta, no
@@ -101,6 +101,16 @@ public class Persona {
 		return false;
 	}
 
+	/**
+	 * Añade un nuevo amigo
+	 * 
+	 * @param p
+	 *            persona que pasará a ser un amigo. Debe ser correcta, no
+	 *            nulo, no ser ya amigo, ser conocido.
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 */
 	public void addAmigo(Persona p) {
 		// TODO Auto-generated method stub
 		
