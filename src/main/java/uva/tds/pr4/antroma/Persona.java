@@ -116,4 +116,9 @@ public class Persona {
 		
 	}
 
+	public void removeAmigo(Persona p2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -332,7 +332,23 @@ public class PersonaTest {
 		p.addAmigo(p2);	
 	}
 
+	@Test
+	public void removeAmigoCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		amigos[0] = p2;
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.removeAmigo(p2);
+		
 	
+		
+	}
 	
 
 }
