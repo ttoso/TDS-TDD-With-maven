@@ -6,4 +6,14 @@ public class Persona {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Object[] getAmigos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getConocidos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
