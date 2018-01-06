@@ -170,5 +170,22 @@ public class PersonaTest {
 		
 		
 	}
+	
+	@Test
+	public void addConocidoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		p.addConocido(p2);
+		
+	}
+	
+	
+	
 
 }

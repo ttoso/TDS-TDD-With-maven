@@ -66,4 +66,9 @@ public class Persona {
 		return false;
 	}
 
+	public void addConocido(Persona p2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
