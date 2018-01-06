@@ -289,6 +289,33 @@ public class PersonaTest {
 		
 	}
 	
+	@Test (expected = IllegalArgumentException.class)
+	public void addAmigoPersonaNulaTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		p.addAmigo(null);	
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void addAmigoPersonaConocidaPreviamenteTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		conocidos[0] = p2;
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		
+		p.addAmigo(p2);	
+	}
+	
 
 	
 	
