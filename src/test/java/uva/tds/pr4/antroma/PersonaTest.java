@@ -172,6 +172,56 @@ public class PersonaTest {
 	}
 	
 	@Test
+	public void isConocidoCorrectoSiTest() {
+		fail("Quitar en implementación");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+
+		assertTrue(p.isConocido(p2));
+		assertNotNull(p2);
+		
+		
+	}
+	
+	@Test
+	public void isConocidoCorrectoNoTest() {
+		fail("Quitar en implementación");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		
+		assertFalse(p.isConocido(p2));
+		assertNotNull(p2);
+		
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void isConocidoPersonaNullTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		p.isConocido(null);
+		
+		
+	}
+	
+	@Test
 	public void addConocidoTest() {
 		String nombre = "Antonio Román";
 		int id = 12345678;
@@ -182,6 +232,10 @@ public class PersonaTest {
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
 		
 		p.addConocido(p2);
+		
+		assertNotNull(p2);
+		assertTrue(p.isConocido(p2));
+		assertEquals(p2, p.getConocidos()[0]);
 		
 	}
 	

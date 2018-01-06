@@ -71,4 +71,21 @@ public class Persona {
 		
 	}
 
+	/**
+	 * 
+	 * @param p
+	 *            Persona de la que se desea saber si se es conocido o no. Debe ser
+	 *            correcta: no nula.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 * 
+	 * @return true en caso de que sea conocido, false en caso de que no lo sea
+	 */
+	public boolean isConocido(Persona p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
