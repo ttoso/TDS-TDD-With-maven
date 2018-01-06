@@ -7,7 +7,8 @@ package uva.tds.pr4.antroma;
  *
  */
 public class Persona {
-
+	
+	
 	/**
 	 * Constructor de una Persona
 	 * 
@@ -27,26 +28,27 @@ public class Persona {
 	 */
 	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos) {
 		// TODO Auto-generated constructor stub
+		
 	}
 
-	public Object[] getAmigos() {
+	public Persona[] getAmigos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object[] getConocidos() {
+	public Persona[] getConocidos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object getNombre() {
+	public String getNombre() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object getId() {
+	public int getId() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	/**
