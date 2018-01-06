@@ -105,20 +105,31 @@ public class Persona {
 	 * Añade un nuevo amigo
 	 * 
 	 * @param p
-	 *            persona que pasará a ser un amigo. Debe ser correcta, no
-	 *            nulo, no ser ya amigo, ser conocido.
+	 *            persona que pasará a ser un amigo. Debe ser correcta, no nulo,
+	 *            no ser ya amigo, ser conocido.
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
 	public void addAmigo(Persona p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public void removeAmigo(Persona p2) {
+	/**
+	 * Elimina la persona que se le pasa de ser amigo y pasa a ser conocido
+	 * 
+	 * @param p
+	 *            persona que dejará de ser amigo. Debe ser correcta: No nula,
+	 *            ser previamente amiga.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 */
+	public void removeAmigo(Persona p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
