@@ -3,7 +3,10 @@ package uva.tds.pr4.antroma;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+
+@Category(Unit.class)
 public class PersonaTest {
 
 	@Test
@@ -116,6 +119,56 @@ public class PersonaTest {
 		Persona p = new Persona(nombre, id, amigos, conocidos);
 
 		assertEquals(id, p.getId());
+	}
+	
+	@Test
+	public void isAmigoCorrectoSiTest() {
+		fail("Quitar en implementación");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+
+		assertTrue(p.isAmigo(p2));
+		assertNotNull(p2);
+		
+		
+	}
+	
+	@Test
+	public void isAmigoCorrectoNoTest() {
+		fail("Quitar en implementación");
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		
+		assertFalse(p.isAmigo(p2));
+		assertNotNull(p2);
+		
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void isAmigoPersonaNullTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		
+		p.isAmigo(null);
+		
+		
 	}
 
 }

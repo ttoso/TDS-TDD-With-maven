@@ -49,4 +49,9 @@ public class Persona {
 		return null;
 	}
 
+	public boolean isAmigo(Persona p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
