@@ -345,7 +345,6 @@ public class PersonaTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void removeAmigoPersonaNulaTest() {
-		fail("Quitar en implementacion");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
@@ -362,7 +361,6 @@ public class PersonaTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void removeAmigoPersonaNoEnAmigosTest() {
-		fail("Quitar en implementacion");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
@@ -378,7 +376,6 @@ public class PersonaTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void removeAmigoPersonaNoEnTest() {
-		fail("Quitar en implementacion");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
