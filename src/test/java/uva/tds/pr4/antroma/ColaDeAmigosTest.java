@@ -144,15 +144,19 @@ public class ColaDeAmigosTest {
 		assertEquals(p, cola.personaAAtender());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void personaAAtenderPersonaNulaTest() {
+	
+	
+	@Test
+	public void atenderSiguienteCorrectoTest() {
 		Persona[] colaInicial = new Persona[5];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
 
-		cola.pedirVez(null, reserva);
-		cola.personaAAtender();
+		cola.pedirVez(p, reserva);
+		cola.atenderSiguiente();
+
+		assertNotEquals(p, cola.personaAAtender());
 	}
 
 }

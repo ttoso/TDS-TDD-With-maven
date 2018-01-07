@@ -73,4 +73,9 @@ public class ColaDeAmigos {
 		return null;
 	}
 
+	public void atenderSiguiente() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
