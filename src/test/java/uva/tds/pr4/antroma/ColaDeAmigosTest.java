@@ -412,4 +412,35 @@ public class ColaDeAmigosTest {
 		cola.colarse(p2);
 
 	}
+
+	@Test
+	public void isInColaCorrectoSiTest() {
+		Persona[] colaInicial = new Persona[1];
+		colaInicial[0] = p;
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		assertTrue(cola.isInCola(p));
+
+	}
+
+	@Test
+	public void isInColaCorrectoNoTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		assertFalse(cola.isInCola(p));
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void isInColaPersonaNullTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		cola.isInCola(null);
+
+	}
 }

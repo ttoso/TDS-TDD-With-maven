@@ -78,9 +78,26 @@ public class Persona {
 	}
 
 	/**
+	 * Asigna el valor que se le pasa a reservasIniciales.
+	 * 
+	 * @param numReservas
+	 *            numero de reservas que se desean asignar. Debe ser correcto,
+	 *            entre 0 y 10 ambos inclusive.
+	 */
+	public void setReservasIniciales(int reservasIniciales) {
+		if (reservasIniciales < 0)
+			throw new IllegalArgumentException("La reserva debe ser como minimo 0");
+		if (reservasIniciales > 10)
+			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
+
+		this.reservasIniciales = reservasIniciales;
+	}
+
+	/**
 	 * Devuelve los amigos de la persona
 	 * 
-	 * @return un array de Personas que serán los amigos, null en caso de que no haya ninguno.
+	 * @return un array de Personas que serán los amigos, null en caso de que no
+	 *         haya ninguno.
 	 */
 	public Persona[] getAmigos() {
 		Persona[] res = new Persona[amigos.size()];
@@ -89,15 +106,16 @@ public class Persona {
 				res[i] = amigos.get(i);
 			}
 			return res;
-		}else return null;
+		} else
+			return null;
 
-		
 	}
 
 	/**
 	 * Devuelve los conocidos de la persona
 	 * 
-	 * @return un array de Personas que serán los conocidos, null en caso de que no aya ninguno.
+	 * @return un array de Personas que serán los conocidos, null en caso de que
+	 *         no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
 		Persona[] res = new Persona[conocidos.size()];
@@ -107,9 +125,10 @@ public class Persona {
 			}
 			return res;
 		}
-		
-		else return null;
-		
+
+		else
+			return null;
+
 	}
 
 	/**

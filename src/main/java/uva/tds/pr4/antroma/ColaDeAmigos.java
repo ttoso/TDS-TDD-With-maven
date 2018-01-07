@@ -10,9 +10,8 @@ import java.util.ArrayList;
  */
 public class ColaDeAmigos {
 
-	private ArrayList<Persona> colaActual = new ArrayList<>(); 
-	
-	
+	private ArrayList<Persona> colaActual = new ArrayList<>();
+
 	/**
 	 * Constructor de una cola de amigos
 	 * 
@@ -28,13 +27,12 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException("La cola inicial no puede ser nula");
 		if (hasElementosNulos(colaInicial))
 			throw new IllegalArgumentException("colaInicial no puede contener elmentos nulos");
-		
+
 		for (int i = 0; i < colaInicial.length; i++) {
 			colaActual.add(colaInicial[i]);
 		}
 	}
-	
-	
+
 	private boolean hasElementosNulos(Persona[] datos) {
 		for (int i = 0; i < datos.length; i++) {
 			if (datos[0] == null) {
@@ -47,7 +45,8 @@ public class ColaDeAmigos {
 	/**
 	 * Devuelve la cola que hay actualmente
 	 * 
-	 * @return un array de personas cuyo orden será el de la cola, null en caso de que no haya ninguno.
+	 * @return un array de personas cuyo orden será el de la cola, null en caso
+	 *         de que no haya ninguno.
 	 */
 	public Persona[] getColaActual() {
 		Persona[] res = new Persona[colaActual.size()];
@@ -56,14 +55,15 @@ public class ColaDeAmigos {
 				res[i] = colaActual.get(i);
 			}
 			return res;
-		}else return null;
+		} else
+			return null;
 	}
 
 	/**
 	 * Mete a una persona en la cola y anota la reserva que haga
 	 * 
 	 * @param p
-	 *            persona que se añade ala cola. Debe ser correcta: no nula, no
+	 *            persona que se añade a la cola. Debe ser correcta: no nula, no
 	 *            estar previamente en la cola.
 	 * @param reserva
 	 *            numero de personas para las que reserva sitio. Debe ser
@@ -74,8 +74,45 @@ public class ColaDeAmigos {
 	 *             los argumentos del constructor.
 	 */
 	public void pedirVez(Persona p, int reserva) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persnna no puede ser nula");
+		if (isInCola(p))
+			throw new IllegalArgumentException("La persona no debe estar prevaimente en la cola");
+		if (reserva < 0)
+			throw new IllegalArgumentException("La reserva debe ser como minimo 0");
+		if (reserva > 10)
+			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
 
+		p.setReservasIniciales(reserva);
+		colaActual.add(p);
+	}
+
+	/**
+	 * Comprueba si la persona que se le pasa esta en la cola o no
+	 * 
+	 * @param p
+	 *            Persona de la que se desea saber si se es amigo o no. Debe ser
+	 *            correcta: no nula.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 * 
+	 * @return true en caso de que este en la cola, false en caso contrario.
+	 */
+	public boolean isInCola(Persona p) {
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+
+		boolean res = false;
+		if (colaActual.size() != 0) {
+			for (int i = 0; i < colaActual.size(); i++) {
+				if (colaActual.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -91,8 +128,12 @@ public class ColaDeAmigos {
 	 * @return el numero de huecos reservados inicialmente
 	 */
 	public int reservaInicial(Persona p) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (p == null)
+			throw new IllegalArgumentException("La persnna no puede ser nula");
+		if (!isInCola(p))
+			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
+		
+		return p.getReservasIniciales();
 	}
 
 	/**
