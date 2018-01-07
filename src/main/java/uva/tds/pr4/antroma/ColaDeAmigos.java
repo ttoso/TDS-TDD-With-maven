@@ -83,6 +83,7 @@ public class ColaDeAmigos {
 		if (reserva > 10)
 			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
 
+		p.setReservasActuales(reserva);
 		p.setReservasIniciales(reserva);
 		colaActual.add(p);
 	}
@@ -129,7 +130,7 @@ public class ColaDeAmigos {
 	 */
 	public int reservaInicial(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persnna no puede ser nula");
+			throw new IllegalArgumentException("La persona no puede ser nula");
 		if (!isInCola(p))
 			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
 
@@ -173,8 +174,12 @@ public class ColaDeAmigos {
 	 * @return un entero que es el numero de amigos por colar.
 	 */
 	public int amigosporColar(Persona p) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nula");
+		if (!isInCola(p))
+			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
+		
+		return p.getReservasActuales();
 	}
 
 	/**

@@ -231,6 +231,43 @@ public class PersonaTest {
 		p.setReservasIniciales(-1);
 
 	}
+	
+	@Test
+	public void setReservasActualesCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(5);
+
+		assertEquals(5, p.getReservasActuales());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasActualesReservasMayorQue10Test() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(11);
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasActualesReservasNegativoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(-1);
+
+	}
 
 	@Test
 	public void isAmigoCorrectoSiTest() {

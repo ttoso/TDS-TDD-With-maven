@@ -92,6 +92,22 @@ public class Persona {
 
 		this.reservasIniciales = reservasIniciales;
 	}
+	
+	/**
+	 * Asigna el valor que se le pasa a reservasIniciales.
+	 * 
+	 * @param numReservas
+	 *            numero de reservas que se desean asignar. Debe ser correcto,
+	 *            entre 0 y 10 ambos inclusive.
+	 */
+	public void setReservasActuales(int reservasActuales) {
+		if (reservasActuales < 0)
+			throw new IllegalArgumentException("La reserva debe ser como minimo 0");
+		if (reservasActuales > 10)
+			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
+
+		this.reservasActuales = reservasActuales;
+	}
 
 	/**
 	 * Devuelve los amigos de la persona
