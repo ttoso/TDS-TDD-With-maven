@@ -40,7 +40,7 @@ public class Persona {
 
 	/**
 	 * Devuelve los conocidos de la persona
-	 * @returnun array de Personas que serán los conocidos.
+	 * @return un array de Personas que serán los conocidos.
 	 */
 	public Persona[] getConocidos() {
 		// TODO Auto-generated method stub
