@@ -142,8 +142,7 @@ public class ColaDeAmigos {
 	 * @return La persona que sera atendida primero
 	 */
 	public Persona personaAAtender() {
-		// TODO Auto-generated method stub
-		return null;
+		return colaActual.get(0);
 	}
 
 	/**
