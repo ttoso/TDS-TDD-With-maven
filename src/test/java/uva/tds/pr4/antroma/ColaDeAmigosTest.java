@@ -290,4 +290,74 @@ public class ColaDeAmigosTest {
 
 		cola.amigosColados(p);
 	}
+	
+	@Test
+	public void colarseCorrectoTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[3];
+		Persona[] conocidos2 = new Persona[3];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		amigos[0] = p2;
+		p2 = new Persona(nombre, id, amigos, conocidos);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+		cola.colarse(p2);
+
+		assertEquals(p2, cola.getColaActual()[0]);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void colarsePersonaNulaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[3];
+		Persona[] conocidos2 = new Persona[3];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		amigos[0] = p2;
+		p2 = new Persona(nombre, id, amigos, conocidos);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+		cola.colarse(null);
+
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void colarsePersonayaEnLaColaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[3];
+		Persona[] conocidos2 = new Persona[3];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		amigos[0] = p2;
+		p2 = new Persona(nombre, id, amigos, conocidos);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+		cola.colarse(p);
+
+	}
 }
