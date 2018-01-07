@@ -54,7 +54,8 @@ public class ColaDeAmigos {
 	 * Indica el numero de reservas que hizo la persona al llegar
 	 * 
 	 * @param p
-	 *            persona de la que se desean conocer sus reservas. Debe ser correcta. no nula, estar previamente en la cola.
+	 *            persona de la que se desean conocer sus reservas. Debe ser
+	 *            correcta. no nula, estar previamente en la cola.
 	 * @return el numero de huecos reservados inicialmente
 	 */
 	public int reservaInicial(Persona p) {
@@ -62,7 +63,6 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
-	
 	/**
 	 * Persona que será la siguiente en ser atendida
 	 * 
@@ -73,9 +73,12 @@ public class ColaDeAmigos {
 		return null;
 	}
 
+	/**
+	 * Atiende a la primera persona en la cola y la retira de ella.
+	 */
 	public void atenderSiguiente() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
