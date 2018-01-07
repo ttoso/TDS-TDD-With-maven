@@ -121,6 +121,18 @@ public class ColaDeAmigos {
 		return null;
 	}
 
+	/**
+	 * Colarse delante de un amigo en la cola
+	 * 
+	 * @param p2
+	 *            Persona que desea colarse. Debe ser correcta: No nula, no
+	 *            estar previamente en la cola, tener un amigo en la cola, tener
+	 *            una persona que lo considere amigo en la cola.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 */
 	public void colarse(Persona p2) {
 		// TODO Auto-generated method stub
 
