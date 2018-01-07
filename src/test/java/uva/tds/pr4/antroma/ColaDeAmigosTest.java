@@ -192,5 +192,26 @@ public class ColaDeAmigosTest {
 
 		assertEquals(reserva, cola.amigosporColar(p));
 	}
+	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void amigosPorColarPersonaNulaTest() {
+		Persona[] colaInicial = new Persona[5];
+		
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		cola.amigosporColar(null);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void amigosPorColarPersonaNoPreviamenteEnLaColaTest() {
+		Persona[] colaInicial = new Persona[5];
+		
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		cola.amigosporColar(p);
+	}
 
 }
