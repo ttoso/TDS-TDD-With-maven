@@ -81,4 +81,9 @@ public class ColaDeAmigos {
 
 	}
 
+	public int amigosporColar(Persona p) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

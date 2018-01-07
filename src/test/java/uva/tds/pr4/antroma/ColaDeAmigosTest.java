@@ -181,5 +181,16 @@ public class ColaDeAmigosTest {
 
 		assertNotEquals(p, cola.personaAAtender());
 	}
+	
+	@Test
+	public void amigosPorColarCorrectoTest() {
+		Persona[] colaInicial = new Persona[5];
+		
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertEquals(reserva, cola.amigosporColar(p));
+	}
 
 }
