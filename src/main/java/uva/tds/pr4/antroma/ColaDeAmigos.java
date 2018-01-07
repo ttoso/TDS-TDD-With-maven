@@ -96,4 +96,9 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
+	public Persona[] amigosColados(Persona p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -214,4 +214,15 @@ public class ColaDeAmigosTest {
 		cola.amigosporColar(p);
 	}
 
+	
+	@Test
+	public void amigosColadosCorrectoTest() {
+		Persona[] colaInicial = new Persona[5];
+		
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertEquals(reserva, cola.amigosColados(p));
+	}
 }
