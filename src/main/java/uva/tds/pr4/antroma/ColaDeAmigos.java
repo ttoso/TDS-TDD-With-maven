@@ -27,7 +27,7 @@ public class ColaDeAmigos {
 	 * 
 	 * @return un array de personas cuyo orden será el de la cola
 	 */
-	public Object[] getColaActual() {
+	public Persona[] getColaActual() {
 		// TODO Auto-generated method stub
 		return new Persona[5];
 	}
@@ -39,7 +39,7 @@ public class ColaDeAmigos {
 	 *            persona que se añade ala cola. Debe ser correcta: no nula.
 	 * @param reserva
 	 *            numero de personas para las que reserva sitio. Debe ser
-	 *            correcta: positiva.
+	 *            correcta: positiva o 0 si no se quiere reservar.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
@@ -50,9 +50,9 @@ public class ColaDeAmigos {
 
 	}
 
-	public Object reservaInicial(Persona p) {
+	public int reservaInicial(Persona p) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 }

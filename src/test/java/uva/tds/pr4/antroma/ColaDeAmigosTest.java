@@ -96,11 +96,37 @@ public class ColaDeAmigosTest {
 		Persona[] colaInicial = new Persona[5];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 0;
+		int reserva = -1;
 		
 		cola.pedirVez(p, reserva);
 		
 	}
 	
+	
+	@Test
+	public void reservaInicialCorrectoTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		
+		cola.pedirVez(p, reserva);
+		cola.reservaInicial(p);
+		
+		assertEquals(reserva, cola.reservaInicial(p));
+	}
+	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void reservainicialPersonaNulaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		
+		cola.pedirVez(p, reserva);
+		cola.reservaInicial(null);
+		
+	}
 
 }
