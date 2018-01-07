@@ -12,12 +12,11 @@ public class Persona {
 
 	private String nombre;
 	private int id;
-	private ArrayList<Persona> amigos = new ArrayList<Persona>();
-	private ArrayList<Persona> conocidos = new ArrayList<Persona>();
+	private ArrayList<Persona> amigos = new ArrayList<>();
+	private ArrayList<Persona> conocidos = new ArrayList<>();
 	private int reservasIniciales;
 	private int reservasActuales;
-	
-	
+
 	/**
 	 * Constructor de una Persona
 	 * 
@@ -27,10 +26,12 @@ public class Persona {
 	 * @param id
 	 *            Numero identificador de la persona. Debe ser correto: Positivo
 	 * @param amigos
-	 *            Array de los amigos de la persona Debe ser correcto: No nulo
+	 *            Array de los amigos de la persona Debe ser correcto: No nulo,
+	 *            no contener elmentos nulos
 	 * @param conocidos
 	 *            Array de los conocidos de la persona, los amigos tambien se
-	 *            contarán como conocidos. Debe ser correcto: No nulo
+	 *            contarán como conocidos. Debe ser correcto: No nulo, no
+	 *            contener elementos nulos
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
@@ -50,25 +51,40 @@ public class Persona {
 			throw new IllegalArgumentException("Reservas no puede ser negativo");
 		if (reservas > 10)
 			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
-		
+		if (hasElementosNulos(amigos))
+			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+		if (hasElementosNulos(conocidos))
+			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+
 		this.nombre = nombre;
 		this.id = id;
 		reservasIniciales = reservas;
 		reservasActuales = reservas;
-		for (int i = 0; i < conocidos.length-1; i++) {
+		for (int i = 0; i < conocidos.length; i++) {
 			this.conocidos.add(conocidos[i]);
 		}
-		for (int i = 0; i < amigos.length-1; i++) {
+		for (int i = 0; i < amigos.length; i++) {
 			this.amigos.add(amigos[i]);
 		}
 	}
+
+	private boolean hasElementosNulos(Persona[] datos) {
+		for (int i = 0; i < datos.length; i++) {
+			if (datos[0] == null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Devuelve los amigos de la persona
+	 * 
 	 * @return un array de Personas que serán los amigos.
 	 */
 	public Persona[] getAmigos() {
 		Persona[] res = new Persona[amigos.size()];
-		for (int i = 0; i < amigos.size(); i++) {
+		for (int i = 0; i < res.length; i++) {
 			res[i] = amigos.get(i);
 		}
 		return res;
@@ -76,6 +92,7 @@ public class Persona {
 
 	/**
 	 * Devuelve los conocidos de la persona
+	 * 
 	 * @return un array de Personas que serán los conocidos.
 	 */
 	public Persona[] getConocidos() {
@@ -88,6 +105,7 @@ public class Persona {
 
 	/**
 	 * Devuelve el nombre de la persona
+	 * 
 	 * @return un string que será el nombre de la persona.
 	 */
 	public String getNombre() {
@@ -97,29 +115,31 @@ public class Persona {
 
 	/**
 	 * Devuelve el identificador de la persona
+	 * 
 	 * @return un entero que será el identificador de la persona.
 	 */
 	public int getId() {
 		// TODO Auto-generated method stub
 		return id;
 	}
-	
+
 	/**
 	 * Devuelve las reservas actuales de la persona
+	 * 
 	 * @return un entero que será las reservas actuales.
 	 */
 	public int getReservasActuales() {
 		return reservasActuales;
 	}
-	
+
 	/**
 	 * Devuelve las reservas iniciales de la persona
+	 * 
 	 * @return un entero que será las reservas iniciales.
 	 */
 	public int getReservasIniciales() {
 		return reservasIniciales;
 	}
-
 
 	/**
 	 * Comprueba si la persona que se le pasa es amigo o no
@@ -135,8 +155,18 @@ public class Persona {
 	 * @return true en caso de que sea su amiga, false en caso de que no lo sea
 	 */
 	public boolean isAmigo(Persona p) {
-		// TODO Auto-generated method stub
-		return false;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+        
+		boolean res = false;
+		if (amigos.size() != 0) {
+			for (int i = 0; i < amigos.size(); i++) {
+				if (amigos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -150,7 +180,10 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void addConocido(Persona p) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (isConocido(p))
+			throw new IllegalArgumentException("La persona no puede ser nulo");
 
 	}
 
@@ -168,8 +201,26 @@ public class Persona {
 	 * @return true en caso de que sea conocido, false en caso de que no lo sea
 	 */
 	public boolean isConocido(Persona p) {
-		// TODO Auto-generated method stub
-		return false;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+
+		boolean res = false;
+		if (conocidos.size() != 0) {
+			for (int i = 0; i < conocidos.size(); i++) {
+				if (conocidos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+		if (amigos.size() != 0) {
+			for (int i = 0; i < amigos.size(); i++) {
+				if (amigos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+
+		return res;
 	}
 
 	/**

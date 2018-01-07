@@ -25,7 +25,7 @@ public class ColaDeAmigosTest {
 		amigos = new Persona[3];
 		conocidos = new Persona[3];
 
-		p = new Persona(nombre, id, amigos, conocidos);
+		p = new Persona(nombre, id, amigos, conocidos, 0);
 	}
 
 	@After
@@ -234,12 +234,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -258,12 +258,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -282,12 +282,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 
@@ -303,12 +303,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -327,12 +327,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -350,12 +350,12 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -373,10 +373,10 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 
 		amigos[0] = p2;
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -394,11 +394,11 @@ public class ColaDeAmigosTest {
 		Persona[] amigos2 = new Persona[3];
 		Persona[] conocidos2 = new Persona[3];
 
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2);
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
 		
-		p2 = new Persona(nombre, id, amigos, conocidos);
+		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;

@@ -33,6 +33,17 @@ public class PersonaTest {
 		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, null, conocidos,3);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ConstructorAmigosContieneNulosTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] conocidos = new Persona[0];
+		Persona[] amigos = new Persona[1];
+
+		@SuppressWarnings("unused")
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void ConstructorConocidosNuloTest() {
@@ -42,6 +53,17 @@ public class PersonaTest {
 
 		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, amigos, null,3);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ConstructorConocidosContieneNulosTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] conocidos = new Persona[1];
+		Persona[] amigos = new Persona[0];
+
+		@SuppressWarnings("unused")
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -106,6 +128,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[0];
 		Persona[] conocidos = new Persona[0];
 
+		Persona p2 = new Persona(nombre, 87654321, amigos, conocidos,3);
+		amigos = new Persona[] {p2};
 		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertArrayEquals(amigos, p.getAmigos());
@@ -175,11 +199,11 @@ public class PersonaTest {
 	public void isAmigoCorrectoSiTest() {
 		String nombre = "Antonio Román";
 		int id = 12345678;
-		Persona[] amigos = new Persona[1];
+		Persona[] amigos = new Persona[0];
 		Persona[] conocidos = new Persona[0];
 
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
-		amigos[0] = p2;
+		amigos =new Persona[] {p2};
 		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		
@@ -191,7 +215,6 @@ public class PersonaTest {
 	
 	@Test
 	public void isAmigoCorrectoNoTest() {
-		fail("Quitar en implementación");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[0];
@@ -226,10 +249,10 @@ public class PersonaTest {
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[0];
-		Persona[] conocidos = new Persona[1];
+		Persona[] conocidos = new Persona[0];
 
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
-		conocidos[0] = p2;  
+		conocidos = new Persona[] {p2};  
 		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		
@@ -241,7 +264,6 @@ public class PersonaTest {
 	
 	@Test
 	public void isConocidoCorrectoNoTest() {
-		fail("Quitar en implementación");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[0];
