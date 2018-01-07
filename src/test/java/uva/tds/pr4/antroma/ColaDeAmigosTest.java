@@ -178,7 +178,6 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void atenderSiguienteCorrectoTest() {
-		fail("Quitar en implementacion");
 		Persona[] colaInicial = new Persona[1];
 		colaInicial[0] = p;
 

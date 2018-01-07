@@ -132,16 +132,20 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException("La persnna no puede ser nula");
 		if (!isInCola(p))
 			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
-		
+
 		return p.getReservasIniciales();
 	}
 
 	/**
 	 * Persona que será la siguiente en ser atendida
 	 * 
-	 * @return La persona que sera atendida primero
+	 * @return La persona que sera atendida primero, null en caso de que no
+	 *         halla nadie.
 	 */
 	public Persona personaAAtender() {
+		if (colaActual.isEmpty()) {
+			return null;
+		}
 		return colaActual.get(0);
 	}
 
@@ -149,8 +153,10 @@ public class ColaDeAmigos {
 	 * Atiende a la primera persona en la cola y la retira de ella.
 	 */
 	public void atenderSiguiente() {
-		// TODO Auto-generated method stub
-
+		if (!colaActual.isEmpty()) {
+			colaActual.remove(0);
+		}
+		
 	}
 
 	/**
