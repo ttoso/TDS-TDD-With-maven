@@ -32,4 +32,9 @@ public class ColaDeAmigos {
 		return null;
 	}
 
+	public void pedirVez(Persona p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

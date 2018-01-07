@@ -30,6 +30,7 @@ public class PersonaTest {
 		int id = 12345678;
 		Persona[] conocidos = new Persona[3];
 
+		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, null, conocidos);
 	}
 
@@ -39,16 +40,17 @@ public class PersonaTest {
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
 
+		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, amigos, null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void ConstructorNombreNuloTest() {
-		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
+		@SuppressWarnings("unused")
 		Persona p = new Persona(null, id, amigos, conocidos);
 	}
 	
@@ -60,6 +62,7 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
+		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, amigos, conocidos);
 	}
 	
@@ -70,6 +73,7 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
+		@SuppressWarnings("unused")
 		Persona p = new Persona(nombre, id, amigos, conocidos);
 	}
 
