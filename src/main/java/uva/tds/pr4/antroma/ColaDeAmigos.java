@@ -32,9 +32,22 @@ public class ColaDeAmigos {
 		return new Persona[5];
 	}
 
+	/**
+	 * Mete a una persona en la cola y anota la reserva que haga
+	 * 
+	 * @param p
+	 *            persona que se añade ala cola. Debe ser correcta: no nula.
+	 * @param reserva
+	 *            numero de personas para las que reserva sitio. Debe ser
+	 *            correcta: positiva.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 */
 	public void pedirVez(Persona p, int reserva) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public Object reservaInicial(Persona p) {
