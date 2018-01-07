@@ -12,4 +12,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Object[] getColaActual() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
