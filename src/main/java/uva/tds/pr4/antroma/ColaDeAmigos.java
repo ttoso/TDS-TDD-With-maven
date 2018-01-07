@@ -62,7 +62,7 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
-	public Object personaAAtender() {
+	public Persona personaAAtender() {
 		// TODO Auto-generated method stub
 		return null;
 	}
