@@ -1,5 +1,7 @@
 package uva.tds.pr4.antroma;
 
+import java.util.ArrayList;
+
 /**
  * Implementacion simple de una persona con amigos y conocidos
  * 
@@ -7,6 +9,13 @@ package uva.tds.pr4.antroma;
  *
  */
 public class Persona {
+
+	private String nombre;
+	private int id;
+	private ArrayList<Persona> amigos = new ArrayList<>();
+	private ArrayList<Persona> conocidos = new ArrayList<>();
+	private int reservasIniciales;
+	private int reservasActuales;
 
 	/**
 	 * Constructor de una Persona
@@ -17,52 +26,128 @@ public class Persona {
 	 * @param id
 	 *            Numero identificador de la persona. Debe ser correto: Positivo
 	 * @param amigos
-	 *            Array de los amigos de la persona Debe ser correcto: No nulo
+	 *            Array de los amigos de la persona Debe ser correcto: No nulo,
+	 *            no contener elmentos nulos
 	 * @param conocidos
 	 *            Array de los conocidos de la persona, los amigos tambien se
-	 *            contarán como conocidos. Debe ser correcto: No nulo
+	 *            contarán como conocidos. Debe ser correcto: No nulo, no
+	 *            contener elementos nulos
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
-	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos) {
-		// TODO Auto-generated constructor stub
+	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos, int reservas) {
+		if (nombre == null)
+			throw new IllegalArgumentException("El nombre no puede ser nulo");
+		if (nombre == "")
+			throw new IllegalArgumentException("El nombre no puede ser cadena vacia");
+		if (id <= 0)
+			throw new IllegalArgumentException("El id debe ser positivo");
+		if (amigos == null)
+			throw new IllegalArgumentException("Amigos no puede ser nulo");
+		if (conocidos == null)
+			throw new IllegalArgumentException("Conocidos no puede ser nulo");
+		if (reservas < 0)
+			throw new IllegalArgumentException("Reservas no puede ser negativo");
+		if (reservas > 10)
+			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+		if (hasElementosNulos(amigos))
+			throw new IllegalArgumentException("Amigos no puede contener elmentos nulos");
+		if (hasElementosNulos(conocidos))
+			throw new IllegalArgumentException("Conocidos no puede contener elementos nulos");
 
+		this.nombre = nombre;
+		this.id = id;
+		reservasIniciales = reservas;
+		reservasActuales = reservas;
+		for (int i = 0; i < conocidos.length; i++) {
+			this.conocidos.add(conocidos[i]);
+		}
+		for (int i = 0; i < amigos.length; i++) {
+			this.amigos.add(amigos[i]);
+		}
 	}
+
+	private boolean hasElementosNulos(Persona[] datos) {
+		for (int i = 0; i < datos.length; i++) {
+			if (datos[0] == null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Devuelve los amigos de la persona
-	 * @return un array de Personas que serán los amigos.
+	 * 
+	 * @return un array de Personas que serán los amigos, null en caso de que no haya ninguno.
 	 */
 	public Persona[] getAmigos() {
-		// TODO Auto-generated method stub
-		return null;
+		Persona[] res = new Persona[amigos.size()];
+		if (!amigos.isEmpty()) {
+			for (int i = 0; i < res.length; i++) {
+				res[i] = amigos.get(i);
+			}
+			return res;
+		}else return null;
+
+		
 	}
 
 	/**
 	 * Devuelve los conocidos de la persona
-	 * @return un array de Personas que serán los conocidos.
+	 * 
+	 * @return un array de Personas que serán los conocidos, null en caso de que no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
-		// TODO Auto-generated method stub
-		return new Persona[3];
+		Persona[] res = new Persona[conocidos.size()];
+		if (!conocidos.isEmpty()) {
+			for (int i = 0; i < conocidos.size(); i++) {
+				res[i] = conocidos.get(i);
+			}
+			return res;
+		}
+		
+		else return null;
+		
 	}
 
 	/**
 	 * Devuelve el nombre de la persona
+	 * 
 	 * @return un string que será el nombre de la persona.
 	 */
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	/**
 	 * Devuelve el identificador de la persona
+	 * 
 	 * @return un entero que será el identificador de la persona.
 	 */
 	public int getId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return id;
+	}
+
+	/**
+	 * Devuelve las reservas actuales de la persona
+	 * 
+	 * @return un entero que será las reservas actuales.
+	 */
+	public int getReservasActuales() {
+		return reservasActuales;
+	}
+
+	/**
+	 * Devuelve las reservas iniciales de la persona
+	 * 
+	 * @return un entero que será las reservas iniciales.
+	 */
+	public int getReservasIniciales() {
+		return reservasIniciales;
 	}
 
 	/**
@@ -79,8 +164,18 @@ public class Persona {
 	 * @return true en caso de que sea su amiga, false en caso de que no lo sea
 	 */
 	public boolean isAmigo(Persona p) {
-		// TODO Auto-generated method stub
-		return false;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+
+		boolean res = false;
+		if (amigos.size() != 0) {
+			for (int i = 0; i < amigos.size(); i++) {
+				if (amigos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -94,8 +189,12 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void addConocido(Persona p) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (isConocido(p))
+			throw new IllegalArgumentException("La persona no puede ser conocido previamente");
 
+		conocidos.add(p);
 	}
 
 	/**
@@ -112,8 +211,26 @@ public class Persona {
 	 * @return true en caso de que sea conocido, false en caso de que no lo sea
 	 */
 	public boolean isConocido(Persona p) {
-		// TODO Auto-generated method stub
-		return false;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+
+		boolean res = false;
+		if (conocidos.size() != 0) {
+			for (int i = 0; i < conocidos.size(); i++) {
+				if (conocidos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+		if (amigos.size() != 0) {
+			for (int i = 0; i < amigos.size(); i++) {
+				if (amigos.get(i).equals(p)) {
+					res = true;
+				}
+			}
+		}
+
+		return res;
 	}
 
 	/**
@@ -127,8 +244,14 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void addAmigo(Persona p) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (!isConocido(p))
+			throw new IllegalArgumentException("La persona debe ser conocido previamente");
+		if (isAmigo(p))
+			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
 
+		amigos.add(p);
 	}
 
 	/**
@@ -143,8 +266,12 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void removeAmigo(Persona p) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (!isAmigo(p))
+			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
+		amigos.remove(p);
 	}
 
 }
