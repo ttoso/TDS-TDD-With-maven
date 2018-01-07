@@ -126,8 +126,9 @@ public class ColaDeAmigos {
 	 * 
 	 * @param p2
 	 *            Persona que desea colarse. Debe ser correcta: No nula, no
-	 *            estar previamente en la cola, tener un amigo en la cola, tener
-	 *            una persona que lo considere amigo en la cola.
+	 *            estar previamente en la cola, tener un amigo en la cola que
+	 *            pueda colarle, tener una persona que lo considere amigo en la
+	 *            cola.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
