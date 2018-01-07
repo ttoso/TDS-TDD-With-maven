@@ -101,4 +101,9 @@ public class ColaDeAmigos {
 		return null;
 	}
 
+	public void colarse(Persona p2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
