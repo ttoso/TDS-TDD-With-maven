@@ -36,10 +36,10 @@ public class ColaDeAmigos {
 	 * Mete a una persona en la cola y anota la reserva que haga
 	 * 
 	 * @param p
-	 *            persona que se añade ala cola. Debe ser correcta: no nula.
+	 *            persona que se añade ala cola. Debe ser correcta: no nula, no estar previamente en la cola.
 	 * @param reserva
 	 *            numero de personas para las que reserva sitio. Debe ser
-	 *            correcta: positiva o 0 si no se quiere reservar.
+	 *            correcta: positiva o 0 si no se quiere reservar, menor que 11.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
