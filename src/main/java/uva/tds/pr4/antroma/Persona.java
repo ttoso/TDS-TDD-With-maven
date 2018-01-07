@@ -1,5 +1,7 @@
 package uva.tds.pr4.antroma;
 
+import java.util.ArrayList;
+
 /**
  * Implementacion simple de una persona con amigos y conocidos
  * 
@@ -10,8 +12,8 @@ public class Persona {
 
 	private String nombre;
 	private int id;
-	private Persona[] amigos;
-	private Persona[] conocidos;
+	private ArrayList<Persona> amigos = new ArrayList<Persona>();
+	private ArrayList<Persona> conocidos = new ArrayList<Persona>();
 	private int reservasIniciales;
 	private int reservasActuales;
 	
@@ -51,17 +53,25 @@ public class Persona {
 		
 		this.nombre = nombre;
 		this.id = id;
-		this.amigos = amigos;
-		this.conocidos = conocidos;
 		reservasIniciales = reservas;
 		reservasActuales = reservas;
+		for (int i = 0; i < conocidos.length-1; i++) {
+			this.conocidos.add(conocidos[i]);
+		}
+		for (int i = 0; i < amigos.length-1; i++) {
+			this.amigos.add(amigos[i]);
+		}
 	}
 	/**
 	 * Devuelve los amigos de la persona
 	 * @return un array de Personas que serán los amigos.
 	 */
 	public Persona[] getAmigos() {
-		return amigos;
+		Persona[] res = new Persona[amigos.size()];
+		for (int i = 0; i < amigos.size(); i++) {
+			res[i] = amigos.get(i);
+		}
+		return res;
 	}
 
 	/**
@@ -69,7 +79,11 @@ public class Persona {
 	 * @return un array de Personas que serán los conocidos.
 	 */
 	public Persona[] getConocidos() {
-		return conocidos;
+		Persona[] res = new Persona[conocidos.size()];
+		for (int i = 0; i < conocidos.size(); i++) {
+			res[i] = conocidos.get(i);
+		}
+		return res;
 	}
 
 	/**
