@@ -1,5 +1,11 @@
 package uva.tds.pr4.antroma;
 
+/**
+ * Implementación simple de una cola para amigos
+ * 
+ * @author toso
+ *
+ */
 public class ColaDeAmigos {
 
 	public ColaDeAmigos(Persona[] colaInicial) {
