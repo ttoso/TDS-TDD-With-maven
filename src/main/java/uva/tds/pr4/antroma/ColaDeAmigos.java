@@ -1,5 +1,7 @@
 package uva.tds.pr4.antroma;
 
+import java.util.ArrayList;
+
 /**
  * Implementación simple de una cola para amigos
  * 
@@ -8,28 +10,53 @@ package uva.tds.pr4.antroma;
  */
 public class ColaDeAmigos {
 
+	private ArrayList<Persona> colaActual = new ArrayList<>(); 
+	
+	
 	/**
 	 * Constructor de una cola de amigos
 	 * 
 	 * @param colaInicial
 	 *            array que indicará la cola que se tiene actualmente. Debe ser
-	 *            correcto. no nulo.
+	 *            correcto. no nulo, no contener elemntos nulos.
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
 	public ColaDeAmigos(Persona[] colaInicial) {
-		// TODO Auto-generated constructor stub
+		if (colaInicial == null)
+			throw new IllegalArgumentException("La cola inicial no puede ser nula");
+		if (hasElementosNulos(colaInicial))
+			throw new IllegalArgumentException("colaInicial no puede contener elmentos nulos");
+		
+		for (int i = 0; i < colaInicial.length; i++) {
+			colaActual.add(colaInicial[i]);
+		}
+	}
+	
+	
+	private boolean hasElementosNulos(Persona[] datos) {
+		for (int i = 0; i < datos.length; i++) {
+			if (datos[0] == null) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
 	 * Devuelve la cola que hay actualmente
 	 * 
-	 * @return un array de personas cuyo orden será el de la cola
+	 * @return un array de personas cuyo orden será el de la cola, null en caso de que no haya ninguno.
 	 */
 	public Persona[] getColaActual() {
-		// TODO Auto-generated method stub
-		return new Persona[5];
+		Persona[] res = new Persona[colaActual.size()];
+		if (!colaActual.isEmpty()) {
+			for (int i = 0; i < res.length; i++) {
+				res[i] = colaActual.get(i);
+			}
+			return res;
+		}else return null;
 	}
 
 	/**
