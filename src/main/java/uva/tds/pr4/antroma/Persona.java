@@ -183,8 +183,9 @@ public class Persona {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nulo");
 		if (isConocido(p))
-			throw new IllegalArgumentException("La persona no puede ser nulo");
-
+			throw new IllegalArgumentException("La persona no puede ser conocido previamente");
+		
+		conocidos.add(p);
 	}
 
 	/**
@@ -234,8 +235,15 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void addAmigo(Persona p) {
-		// TODO Auto-generated method stub
-
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (!isConocido(p))
+			throw new IllegalArgumentException("La persona debe ser conocido previamente");
+		if (isAmigo(p))
+			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
+		
+		
+		amigos.add(p);
 	}
 
 	/**
