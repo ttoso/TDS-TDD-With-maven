@@ -52,9 +52,9 @@ public class Persona {
 		if (reservas > 10)
 			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
 		if (hasElementosNulos(amigos))
-			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+			throw new IllegalArgumentException("Amigos no puede contener elmentos nulos");
 		if (hasElementosNulos(conocidos))
-			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+			throw new IllegalArgumentException("Conocidos no puede contener elementos nulos");
 
 		this.nombre = nombre;
 		this.id = id;
