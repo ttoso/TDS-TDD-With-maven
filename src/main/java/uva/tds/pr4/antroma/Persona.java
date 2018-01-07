@@ -80,27 +80,36 @@ public class Persona {
 	/**
 	 * Devuelve los amigos de la persona
 	 * 
-	 * @return un array de Personas que serán los amigos.
+	 * @return un array de Personas que serán los amigos, null en caso de que no haya ninguno.
 	 */
 	public Persona[] getAmigos() {
 		Persona[] res = new Persona[amigos.size()];
-		for (int i = 0; i < res.length; i++) {
-			res[i] = amigos.get(i);
-		}
-		return res;
+		if (!amigos.isEmpty()) {
+			for (int i = 0; i < res.length; i++) {
+				res[i] = amigos.get(i);
+			}
+			return res;
+		}else return null;
+
+		
 	}
 
 	/**
 	 * Devuelve los conocidos de la persona
 	 * 
-	 * @return un array de Personas que serán los conocidos.
+	 * @return un array de Personas que serán los conocidos, null en caso de que no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
 		Persona[] res = new Persona[conocidos.size()];
-		for (int i = 0; i < conocidos.size(); i++) {
-			res[i] = conocidos.get(i);
+		if (!conocidos.isEmpty()) {
+			for (int i = 0; i < conocidos.size(); i++) {
+				res[i] = conocidos.get(i);
+			}
+			return res;
 		}
-		return res;
+		
+		else return null;
+		
 	}
 
 	/**
@@ -157,7 +166,7 @@ public class Persona {
 	public boolean isAmigo(Persona p) {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nulo");
-        
+
 		boolean res = false;
 		if (amigos.size() != 0) {
 			for (int i = 0; i < amigos.size(); i++) {
@@ -184,7 +193,7 @@ public class Persona {
 			throw new IllegalArgumentException("La persona no puede ser nulo");
 		if (isConocido(p))
 			throw new IllegalArgumentException("La persona no puede ser conocido previamente");
-		
+
 		conocidos.add(p);
 	}
 
@@ -241,8 +250,7 @@ public class Persona {
 			throw new IllegalArgumentException("La persona debe ser conocido previamente");
 		if (isAmigo(p))
 			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
-		
-		
+
 		amigos.add(p);
 	}
 
@@ -258,8 +266,12 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public void removeAmigo(Persona p) {
-		// TODO Auto-generated method stub
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nulo");
+		if (!isAmigo(p))
+			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
+		amigos.remove(p);
 	}
 
 }

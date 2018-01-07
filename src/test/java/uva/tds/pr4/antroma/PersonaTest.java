@@ -19,8 +19,8 @@ public class PersonaTest {
 
 		assertEquals(nombre, p.getNombre());
 		assertEquals(id, p.getId());
-		assertArrayEquals(amigos, p.getAmigos());
-		assertArrayEquals(conocidos, p.getConocidos());
+		assertArrayEquals(null, p.getAmigos());
+		assertArrayEquals(null, p.getConocidos());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -140,6 +140,8 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[0];
 		Persona[] amigos = new Persona[0];
 
+		Persona p2 = new Persona(nombre, 87654321, amigos, conocidos, 3);
+		conocidos = new Persona[] { p2 };
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
 
 		assertArrayEquals(conocidos, p.getConocidos());
@@ -383,14 +385,14 @@ public class PersonaTest {
 
 	@Test
 	public void removeAmigoCorrectoTest() {
-		fail("Quitar en implementacion");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[0];
 		Persona[] conocidos = new Persona[0];
 
 		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos, 3);
-		amigos = new Persona[] { p2 };
+		Persona p3 = new Persona("Jose Romero", 51324331, amigos, conocidos, 3);
+		amigos = new Persona[] { p2, p3 };
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
 
 		p.removeAmigo(p2);
