@@ -57,6 +57,10 @@ public class ColaDeAmigos {
 	 * @param p
 	 *            persona de la que se desean conocer sus reservas. Debe ser
 	 *            correcta. no nula, estar previamente en la cola.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
 	 * @return el numero de huecos reservados inicialmente
 	 */
 	public int reservaInicial(Persona p) {
@@ -89,6 +93,10 @@ public class ColaDeAmigos {
 	 *            persona de la que se desea saber el numero de amigos por
 	 *            colar. Debe ser correcta: no nula, estar previamente en la
 	 *            cola
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
 	 * @return un entero que es el numero de amigos por colar.
 	 */
 	public int amigosporColar(Persona p) {
@@ -96,6 +104,18 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
+	/**
+	 * Amigos que ha colado una persona
+	 * 
+	 * @param p
+	 *            persona de la que se desea saber cuantos amigos ha colado.
+	 *            Debe ser correcta: no nula, estar previamente en la cola.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 * @return un array de personas que son los amigos que la persona ha colado.
+	 */
 	public Persona[] amigosColados(Persona p) {
 		// TODO Auto-generated method stub
 		return null;
@@ -103,7 +123,7 @@ public class ColaDeAmigos {
 
 	public void colarse(Persona p2) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
