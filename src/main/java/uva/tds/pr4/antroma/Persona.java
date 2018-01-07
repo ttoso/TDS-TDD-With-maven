@@ -44,7 +44,7 @@ public class Persona {
 	 */
 	public Persona[] getConocidos() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Persona[3];
 	}
 
 	/**

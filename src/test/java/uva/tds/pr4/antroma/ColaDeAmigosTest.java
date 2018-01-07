@@ -39,6 +39,7 @@ public class ColaDeAmigosTest {
 	
 	@Test
 	public void ConstructorCorrectoTest() {
+		fail("Quitar en implementacion");
 		Persona[] colaInicial = new Persona[5];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
@@ -56,6 +57,7 @@ public class ColaDeAmigosTest {
 	
 	@Test
 	public void getColaActualCorrectoTest() {
+		fail("Quitar en implementacion");
 		Persona[] colaInicial = new Persona[5];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
@@ -69,10 +71,36 @@ public class ColaDeAmigosTest {
 		Persona[] colaInicial = new Persona[5];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
 		
-		cola.pedirVez(p);
+		cola.pedirVez(p, reserva);
 		
-		assertArrayEquals(colaInicial, cola.getColaActual());
+		assertEquals(p, cola.getColaActual()[cola.getColaActual().length-1]);
+		assertEquals(reserva, cola.reservaInicial(p));
 	}
+	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void pedirVezPersonaNulaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		
+		cola.pedirVez(null, reserva);
+		
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void pedirVezReservaNoPositivaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 0;
+		
+		cola.pedirVez(p, reserva);
+		
+	}
+	
 
 }

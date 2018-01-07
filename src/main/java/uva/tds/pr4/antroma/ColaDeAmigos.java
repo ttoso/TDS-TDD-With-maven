@@ -29,12 +29,17 @@ public class ColaDeAmigos {
 	 */
 	public Object[] getColaActual() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Persona[5];
 	}
 
-	public void pedirVez(Persona p) {
+	public void pedirVez(Persona p, int reserva) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Object reservaInicial(Persona p) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

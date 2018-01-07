@@ -91,6 +91,7 @@ public class PersonaTest {
 
 	@Test
 	public void getConocidosCorrectoTest() {
+		fail("Quitar en implementación");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] conocidos = new Persona[3];
@@ -127,7 +128,6 @@ public class PersonaTest {
 	
 	@Test
 	public void isAmigoCorrectoSiTest() {
-		fail("Quitar en implementación");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
@@ -175,7 +175,7 @@ public class PersonaTest {
 	
 	@Test
 	public void isConocidoCorrectoSiTest() {
-		fail("Quitar en implementación");
+
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] amigos = new Persona[3];
