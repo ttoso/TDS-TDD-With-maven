@@ -7,8 +7,10 @@ import org.junit.Test;
 public class ColaDeAmigosTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void ConstructorCorrectoTest() {
+		Persona[] colaInicial = new Persona[5];
+		
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 	}
 
 }
