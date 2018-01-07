@@ -36,7 +36,8 @@ public class ColaDeAmigos {
 	 * Mete a una persona en la cola y anota la reserva que haga
 	 * 
 	 * @param p
-	 *            persona que se añade ala cola. Debe ser correcta: no nula, no estar previamente en la cola.
+	 *            persona que se añade ala cola. Debe ser correcta: no nula, no
+	 *            estar previamente en la cola.
 	 * @param reserva
 	 *            numero de personas para las que reserva sitio. Debe ser
 	 *            correcta: positiva o 0 si no se quiere reservar, menor que 11.
@@ -81,6 +82,15 @@ public class ColaDeAmigos {
 
 	}
 
+	/**
+	 * Numero de amigos que todavia puede colar la persona que se le pasa
+	 * 
+	 * @param p
+	 *            persona de la que se desea saber el numero de amigos por
+	 *            colar. Debe ser correcta: no nula, estar previamente en la
+	 *            cola
+	 * @return un entero que es el numero de amigos por colar.
+	 */
 	public int amigosporColar(Persona p) {
 		// TODO Auto-generated method stub
 		return 0;
