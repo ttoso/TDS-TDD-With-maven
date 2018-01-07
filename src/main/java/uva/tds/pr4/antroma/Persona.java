@@ -8,6 +8,14 @@ package uva.tds.pr4.antroma;
  */
 public class Persona {
 
+	private String nombre;
+	private int id;
+	private Persona[] amigos;
+	private Persona[] conocidos;
+	private int reservasIniciales;
+	private int reservasActuales;
+	
+	
 	/**
 	 * Constructor de una Persona
 	 * 
@@ -25,17 +33,35 @@ public class Persona {
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
-	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos) {
-		// TODO Auto-generated constructor stub
-
+	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos, int reservas) {
+		if (nombre == null)
+			throw new IllegalArgumentException("El nombre no puede ser nulo");
+		if (nombre == "")
+			throw new IllegalArgumentException("El nombre no puede ser cadena vacia");
+		if (id <= 0)
+			throw new IllegalArgumentException("El id debe ser positivo");
+		if (amigos == null)
+			throw new IllegalArgumentException("Amigos no puede ser nulo");
+		if (conocidos == null)
+			throw new IllegalArgumentException("Conocidos no puede ser nulo");
+		if (reservas < 0)
+			throw new IllegalArgumentException("Reservas no puede ser negativo");
+		if (reservas > 10)
+			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
+		
+		this.nombre = nombre;
+		this.id = id;
+		this.amigos = amigos;
+		this.conocidos = conocidos;
+		reservasIniciales = reservas;
+		reservasActuales = reservas;
 	}
 	/**
 	 * Devuelve los amigos de la persona
 	 * @return un array de Personas que serán los amigos.
 	 */
 	public Persona[] getAmigos() {
-		// TODO Auto-generated method stub
-		return null;
+		return amigos;
 	}
 
 	/**
@@ -43,8 +69,7 @@ public class Persona {
 	 * @return un array de Personas que serán los conocidos.
 	 */
 	public Persona[] getConocidos() {
-		// TODO Auto-generated method stub
-		return new Persona[3];
+		return conocidos;
 	}
 
 	/**
@@ -53,7 +78,7 @@ public class Persona {
 	 */
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	/**
@@ -62,8 +87,25 @@ public class Persona {
 	 */
 	public int getId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
+	
+	/**
+	 * Devuelve las reservas actuales de la persona
+	 * @return un entero que será las reservas actuales.
+	 */
+	public int getReservasActuales() {
+		return reservasActuales;
+	}
+	
+	/**
+	 * Devuelve las reservas iniciales de la persona
+	 * @return un entero que será las reservas iniciales.
+	 */
+	public int getReservasIniciales() {
+		return reservasIniciales;
+	}
+
 
 	/**
 	 * Comprueba si la persona que se le pasa es amigo o no

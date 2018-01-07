@@ -16,7 +16,7 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertEquals(nombre, p.getNombre());
 		assertEquals(id, p.getId());
@@ -31,7 +31,7 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		@SuppressWarnings("unused")
-		Persona p = new Persona(nombre, id, null, conocidos);
+		Persona p = new Persona(nombre, id, null, conocidos,3);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -41,7 +41,7 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 
 		@SuppressWarnings("unused")
-		Persona p = new Persona(nombre, id, amigos, null);
+		Persona p = new Persona(nombre, id, amigos, null,3);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -51,7 +51,7 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		@SuppressWarnings("unused")
-		Persona p = new Persona(null, id, amigos, conocidos);
+		Persona p = new Persona(null, id, amigos, conocidos,3);
 	}
 	
 	
@@ -63,7 +63,7 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		@SuppressWarnings("unused")
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -74,7 +74,29 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		@SuppressWarnings("unused")
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ConstructorReservasNegativasTest() {
+		String nombre = "Antonio Román";
+		int id = 1;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		@SuppressWarnings("unused")
+		Persona p = new Persona(nombre, id, amigos, conocidos,-1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ConstructorReservasMayoresA10Test() {
+		String nombre = "Antonio Román";
+		int id = 1;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		@SuppressWarnings("unused")
+		Persona p = new Persona(nombre, id, amigos, conocidos,11);
 	}
 
 	@Test
@@ -84,20 +106,19 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertArrayEquals(amigos, p.getAmigos());
 	}
 
 	@Test
 	public void getConocidosCorrectoTest() {
-		fail("Quitar en implementación");
 		String nombre = "Antonio Román";
 		int id = 12345678;
 		Persona[] conocidos = new Persona[3];
 		Persona[] amigos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertArrayEquals(conocidos, p.getConocidos());
 	}
@@ -109,7 +130,7 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 		Persona[] amigos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertEquals(nombre, p.getNombre());
 	}
@@ -121,9 +142,33 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 		Persona[] amigos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 
 		assertEquals(id, p.getId());
+	}
+	
+	@Test
+	public void getReservasActualesCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+
+		assertEquals(3, p.getReservasActuales());
+	}
+	
+	@Test
+	public void getReservasInicialesCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[3];
+		Persona[] conocidos = new Persona[3];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+
+		assertEquals(3, p.getReservasIniciales());
 	}
 	
 	@Test
@@ -133,8 +178,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 
 		assertTrue(p.isAmigo(p2));
@@ -150,8 +195,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 		
 		assertFalse(p.isAmigo(p2));
@@ -165,8 +210,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 		p.isAmigo(null);
 		
@@ -181,8 +226,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 
 		assertTrue(p.isConocido(p2));
@@ -198,8 +243,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 		
 		assertFalse(p.isConocido(p2));
@@ -213,8 +258,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 		p.isConocido(null);
 		
@@ -230,8 +275,8 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addConocido(p2);
 		
@@ -246,8 +291,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p = new Persona(nombre, id, amigos, conocidos);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		
 		p.addConocido(null);	
 	}
@@ -259,9 +304,9 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		conocidos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addConocido(p2);	
 	}
@@ -276,9 +321,9 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		conocidos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addAmigo(p2);
 		
@@ -293,9 +338,9 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		conocidos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addAmigo(null);	
 	}
@@ -307,9 +352,9 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		conocidos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addAmigo(p2);	
 	}
@@ -321,8 +366,8 @@ public class PersonaTest {
 		Persona[] amigos = new Persona[3];
 		Persona[] conocidos = new Persona[3];
 
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.addAmigo(p2);	
 	}
@@ -336,9 +381,9 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		amigos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.removeAmigo(p2);
 		
@@ -355,9 +400,9 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
 		amigos[0] = p2;
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.removeAmigo(null);
 		
@@ -371,8 +416,8 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.removeAmigo(p2);
 		
@@ -386,8 +431,8 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[3];
 
 		
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos);
-		Persona p = new Persona(nombre, id, amigos, conocidos);
+		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos,3);
+		Persona p = new Persona(nombre, id, amigos, conocidos,3);
 		
 		p.removeAmigo(p2);
 		
