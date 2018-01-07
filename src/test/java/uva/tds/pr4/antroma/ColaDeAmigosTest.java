@@ -128,5 +128,16 @@ public class ColaDeAmigosTest {
 		cola.reservaInicial(null);
 		
 	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void reservainicialPersonaNoEnLacolaTest() {
+		Persona[] colaInicial = new Persona[5];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		
+		cola.reservaInicial(p);
+		
+	}
 
 }

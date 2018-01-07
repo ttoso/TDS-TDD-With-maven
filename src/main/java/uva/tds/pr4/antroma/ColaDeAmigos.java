@@ -50,6 +50,13 @@ public class ColaDeAmigos {
 
 	}
 
+	/**
+	 * Indica el numero de reservas que hizo la persona al llegar
+	 * 
+	 * @param p
+	 *            persona de la que se desean conocer sus reservas. Debe ser correcta. no nula, estar previamente en la cola.
+	 * @return el numero de huecos reservados inicialmente
+	 */
 	public int reservaInicial(Persona p) {
 		// TODO Auto-generated method stub
 		return 0;
