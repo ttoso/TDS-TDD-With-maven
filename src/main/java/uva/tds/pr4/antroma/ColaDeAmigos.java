@@ -62,6 +62,12 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
+	
+	/**
+	 * Persona que será la siguiente en ser atendida
+	 * 
+	 * @return La persona que sera atendida primero
+	 */
 	public Persona personaAAtender() {
 		// TODO Auto-generated method stub
 		return null;
