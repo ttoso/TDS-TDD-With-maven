@@ -45,8 +45,7 @@ public class ColaDeAmigos {
 	/**
 	 * Devuelve la cola que hay actualmente
 	 * 
-	 * @return un array de personas cuyo orden será el de la cola, null en caso
-	 *         de que no haya ninguno.
+	 * @return un array de personas cuyo orden será el de la cola, null en caso.
 	 */
 	public Persona[] getColaActual() {
 		Persona[] res = new Persona[colaActual.size()];
@@ -56,7 +55,7 @@ public class ColaDeAmigos {
 			}
 			return res;
 		} else
-			return null;
+			return new Persona[0];
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException("La persona no puede ser nulo");
 
 		boolean res = false;
-		if (colaActual.size() != 0) {
+		if (!colaActual.isEmpty()) {
 			for (int i = 0; i < colaActual.size(); i++) {
 				if (colaActual.get(i).equals(p)) {
 					res = true;
@@ -130,9 +129,9 @@ public class ColaDeAmigos {
 	 */
 	public int reservaInicial(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nula");
+			throw new IllegalArgumentException("La persona que se pasa no puede ser nula");
 		if (!isInCola(p))
-			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
+			throw new IllegalArgumentException("La persona proporcionada debe estar prevaimente en la cola");
 
 		return p.getReservasIniciales();
 	}
@@ -157,7 +156,7 @@ public class ColaDeAmigos {
 		if (!colaActual.isEmpty()) {
 			colaActual.remove(0);
 		}
-		
+
 	}
 
 	/**
@@ -175,10 +174,10 @@ public class ColaDeAmigos {
 	 */
 	public int amigosporColar(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nula");
+			throw new IllegalArgumentException("La persona proporcionada no puede ser nula");
 		if (!isInCola(p))
 			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
-		
+
 		return p.getReservasActuales();
 	}
 
@@ -192,11 +191,24 @@ public class ColaDeAmigos {
 	 * @throws IllegalArgumentException
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
-	 * @return un array de personas que son los amigos que la persona ha colado.
+	 * @return un array de personas que son los amigos que la persona ha colado,
+	 *         null en el caso de que no haya ninguno.
 	 */
 	public Persona[] amigosColados(Persona p) {
-		// TODO Auto-generated method stub
-		return null;
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nula");
+		if (!isInCola(p))
+			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
+
+		int numeroAmigos = p.getReservasIniciales() - p.getReservasActuales();
+		if (numeroAmigos > 0) {
+			Persona[] resultado = new Persona[numeroAmigos];
+			for (int i = numeroAmigos - 1; i >= 0; i--) {
+				resultado[i] = colaActual.get(colaActual.indexOf(p) - i - 1);
+			}
+			return resultado;
+		}
+		return new Persona[0];
 	}
 
 	/**
@@ -212,9 +224,79 @@ public class ColaDeAmigos {
 	 *             En caso de incumplir alguna de las condiciones impuestas a
 	 *             los argumentos del constructor.
 	 */
-	public void colarse(Persona p2) {
-		// TODO Auto-generated method stub
+	public void colarse(Persona p) {
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nula");
+		if (isInCola(p))
+			throw new IllegalArgumentException("La persona no debe estar prevaimente en la cola");
+		if (!amigoParaColar(p))
+			throw new IllegalArgumentException("La persona debe tener un amigo que pueda colar en la cola");
+		if (!personaQueConsidereAmigoParaColar(p))
+			throw new IllegalArgumentException(
+					"La persona debe tener una persona que la considere amigo y que pueda colar en la cola");
 
+		if (p.getAmigos() != null) {
+			for (int i = 0; i < colaActual.size(); i++) {
+				if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).isAmigo(p)
+						&& colaActual.get(i).getReservasActuales() > 0) {
+					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
+					p.setReservasActuales(0);
+					p.setReservasIniciales(0);
+					p.getAmigos()[i].setReservasActuales(p.getAmigos()[i].getReservasActuales() - 1);
+					break;
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * Indica si una persona tiene amigos en la cola que puedan colarlo
+	 * 
+	 * @param p
+	 *            persona que se desea comprobar si tiene amigos. Debe ser
+	 *            correcta: no nula.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 * @return true en caso de que tenga al menos un amigo que pueda colarlo,
+	 *         false en caso contrario.
+	 */
+	public boolean personaQueConsidereAmigoParaColar(Persona p) {
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nula");
+
+		for (int i = 0; i < colaActual.size(); i++) {
+			if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).getReservasActuales() > 0)
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Indica si hay personas en la cola que consideren amigo a otra y puedan
+	 * colarlo
+	 * 
+	 * @param p
+	 *            persona que se desea comprobar si tiene personas que lo
+	 *            consideran amigo. Debe ser correcta: no nula.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             En caso de incumplir alguna de las condiciones impuestas a
+	 *             los argumentos del constructor.
+	 * @return true en caso de que tenga al menos un amigo que pueda colarlo,
+	 *         false en caso contrario.
+	 */
+	public boolean amigoParaColar(Persona p) {
+		if (p == null)
+			throw new IllegalArgumentException("La persona no puede ser nula");
+
+		for (int i = 0; i < colaActual.size(); i++) {
+			if (colaActual.get(i).isAmigo(p) && colaActual.get(i).getReservasActuales() > 0)
+				return true;
+		}
+		return false;
 	}
 
 }

@@ -19,8 +19,8 @@ public class PersonaTest {
 
 		assertEquals(nombre, p.getNombre());
 		assertEquals(id, p.getId());
-		assertArrayEquals(null, p.getAmigos());
-		assertArrayEquals(null, p.getConocidos());
+		assertArrayEquals(new Persona[0], p.getAmigos());
+		assertArrayEquals(new Persona[0], p.getConocidos());
 	}
 
 	@Test(expected = IllegalArgumentException.class)

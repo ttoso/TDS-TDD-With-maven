@@ -94,7 +94,7 @@ public class Persona {
 	}
 	
 	/**
-	 * Asigna el valor que se le pasa a reservasIniciales.
+	 * Asigna el valor que se le pasa a reservasActuales.
 	 * 
 	 * @param numReservas
 	 *            numero de reservas que se desean asignar. Debe ser correcto,
@@ -123,7 +123,7 @@ public class Persona {
 			}
 			return res;
 		} else
-			return null;
+			return new Persona[0];
 
 	}
 
@@ -143,7 +143,7 @@ public class Persona {
 		}
 
 		else
-			return null;
+			return new Persona[0];
 
 	}
 
@@ -153,7 +153,6 @@ public class Persona {
 	 * @return un string que será el nombre de la persona.
 	 */
 	public String getNombre() {
-		// TODO Auto-generated method stub
 		return nombre;
 	}
 
@@ -163,7 +162,6 @@ public class Persona {
 	 * @return un entero que será el identificador de la persona.
 	 */
 	public int getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
@@ -200,10 +198,10 @@ public class Persona {
 	 */
 	public boolean isAmigo(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona proporcionada no puede ser nulo");
 
 		boolean res = false;
-		if (amigos.size() != 0) {
+		if (!amigos.isEmpty()) {
 			for (int i = 0; i < amigos.size(); i++) {
 				if (amigos.get(i).equals(p)) {
 					res = true;
@@ -225,7 +223,7 @@ public class Persona {
 	 */
 	public void addConocido(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona introducida no puede ser nulo");
 		if (isConocido(p))
 			throw new IllegalArgumentException("La persona no puede ser conocido previamente");
 
@@ -247,17 +245,17 @@ public class Persona {
 	 */
 	public boolean isConocido(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona proporcionada no puede ser nulo");
 
 		boolean res = false;
-		if (conocidos.size() != 0) {
+		if (!conocidos.isEmpty()) {
 			for (int i = 0; i < conocidos.size(); i++) {
 				if (conocidos.get(i).equals(p)) {
 					res = true;
 				}
 			}
 		}
-		if (amigos.size() != 0) {
+		if (!amigos.isEmpty()) {
 			for (int i = 0; i < amigos.size(); i++) {
 				if (amigos.get(i).equals(p)) {
 					res = true;
