@@ -19,8 +19,8 @@ public class PersonaTest {
 
 		assertEquals(nombre, p.getNombre());
 		assertEquals(id, p.getId());
-		assertArrayEquals(null, p.getAmigos());
-		assertArrayEquals(null, p.getConocidos());
+		assertArrayEquals(new Persona[0], p.getAmigos());
+		assertArrayEquals(new Persona[0], p.getConocidos());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -193,6 +193,80 @@ public class PersonaTest {
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
 
 		assertEquals(3, p.getReservasIniciales());
+	}
+
+	@Test
+	public void setReservasInicialesCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasIniciales(5);
+
+		assertEquals(5, p.getReservasIniciales());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasInicialesReservasMayorQue10Test() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasIniciales(11);
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasInicialesReservasNegativoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasIniciales(-1);
+
+	}
+	
+	@Test
+	public void setReservasActualesCorrectoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(5);
+
+		assertEquals(5, p.getReservasActuales());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasActualesReservasMayorQue10Test() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(11);
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void setReservasActualesReservasNegativoTest() {
+		String nombre = "Antonio Román";
+		int id = 12345678;
+		Persona[] amigos = new Persona[0];
+		Persona[] conocidos = new Persona[0];
+
+		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
+		p.setReservasActuales(-1);
+
 	}
 
 	@Test

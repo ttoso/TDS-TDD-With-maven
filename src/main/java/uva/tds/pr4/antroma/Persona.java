@@ -78,9 +78,42 @@ public class Persona {
 	}
 
 	/**
+	 * Asigna el valor que se le pasa a reservasIniciales.
+	 * 
+	 * @param numReservas
+	 *            numero de reservas que se desean asignar. Debe ser correcto,
+	 *            entre 0 y 10 ambos inclusive.
+	 */
+	public void setReservasIniciales(int reservasIniciales) {
+		if (reservasIniciales < 0)
+			throw new IllegalArgumentException("La reserva debe ser como minimo 0");
+		if (reservasIniciales > 10)
+			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
+
+		this.reservasIniciales = reservasIniciales;
+	}
+	
+	/**
+	 * Asigna el valor que se le pasa a reservasActuales.
+	 * 
+	 * @param numReservas
+	 *            numero de reservas que se desean asignar. Debe ser correcto,
+	 *            entre 0 y 10 ambos inclusive.
+	 */
+	public void setReservasActuales(int reservasActuales) {
+		if (reservasActuales < 0)
+			throw new IllegalArgumentException("La reserva debe ser como minimo 0");
+		if (reservasActuales > 10)
+			throw new IllegalArgumentException("La reserva debe ser como maximo 10");
+
+		this.reservasActuales = reservasActuales;
+	}
+
+	/**
 	 * Devuelve los amigos de la persona
 	 * 
-	 * @return un array de Personas que serán los amigos, null en caso de que no haya ninguno.
+	 * @return un array de Personas que serán los amigos, null en caso de que no
+	 *         haya ninguno.
 	 */
 	public Persona[] getAmigos() {
 		Persona[] res = new Persona[amigos.size()];
@@ -89,15 +122,16 @@ public class Persona {
 				res[i] = amigos.get(i);
 			}
 			return res;
-		}else return null;
+		} else
+			return new Persona[0];
 
-		
 	}
 
 	/**
 	 * Devuelve los conocidos de la persona
 	 * 
-	 * @return un array de Personas que serán los conocidos, null en caso de que no aya ninguno.
+	 * @return un array de Personas que serán los conocidos, null en caso de que
+	 *         no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
 		Persona[] res = new Persona[conocidos.size()];
@@ -107,9 +141,10 @@ public class Persona {
 			}
 			return res;
 		}
-		
-		else return null;
-		
+
+		else
+			return new Persona[0];
+
 	}
 
 	/**
@@ -118,7 +153,6 @@ public class Persona {
 	 * @return un string que será el nombre de la persona.
 	 */
 	public String getNombre() {
-		// TODO Auto-generated method stub
 		return nombre;
 	}
 
@@ -128,7 +162,6 @@ public class Persona {
 	 * @return un entero que será el identificador de la persona.
 	 */
 	public int getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
@@ -165,10 +198,10 @@ public class Persona {
 	 */
 	public boolean isAmigo(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona proporcionada no puede ser nulo");
 
 		boolean res = false;
-		if (amigos.size() != 0) {
+		if (!amigos.isEmpty()) {
 			for (int i = 0; i < amigos.size(); i++) {
 				if (amigos.get(i).equals(p)) {
 					res = true;
@@ -190,7 +223,7 @@ public class Persona {
 	 */
 	public void addConocido(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona introducida no puede ser nulo");
 		if (isConocido(p))
 			throw new IllegalArgumentException("La persona no puede ser conocido previamente");
 
@@ -212,17 +245,17 @@ public class Persona {
 	 */
 	public boolean isConocido(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nulo");
+			throw new IllegalArgumentException("La persona proporcionada no puede ser nulo");
 
 		boolean res = false;
-		if (conocidos.size() != 0) {
+		if (!conocidos.isEmpty()) {
 			for (int i = 0; i < conocidos.size(); i++) {
 				if (conocidos.get(i).equals(p)) {
 					res = true;
 				}
 			}
 		}
-		if (amigos.size() != 0) {
+		if (!amigos.isEmpty()) {
 			for (int i = 0; i < amigos.size(); i++) {
 				if (amigos.get(i).equals(p)) {
 					res = true;

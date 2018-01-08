@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-
 @Category(Unit.class)
 public class ColaDeAmigosTest {
 
@@ -40,12 +39,11 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void constructorCorrectoTest() {
-		fail("Quitar en implementacion");
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 
-		assertArrayEquals(colaInicial, cola.getColaActual());
+		assertArrayEquals(new Persona[0], cola.getColaActual());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -54,10 +52,18 @@ public class ColaDeAmigosTest {
 		ColaDeAmigos cola = new ColaDeAmigos(null);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void constructorColaInicialConElementosNulosTest() {
+		Persona[] colaInicial = new Persona[1];
+
+		@SuppressWarnings("unused")
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+	}
+
 	@Test
 	public void getColaActualCorrectoTest() {
-		fail("Quitar en implementacion");
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[1];
+		colaInicial[0] = p;
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 
@@ -66,7 +72,7 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void pedirVezCorrectoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -79,7 +85,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void pedirVezPersonaNulaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -90,7 +96,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void pedirVezPersonaYaEnLaColaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[1];
 		colaInicial[0] = p;
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
@@ -102,7 +108,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void pedirVezReservaNoPositivaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = -1;
@@ -113,7 +119,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void pedirVezReservaMayorQue10Test() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 11;
@@ -124,7 +130,7 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void reservaInicialCorrectoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -137,7 +143,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void reservainicialPersonaNulaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -149,10 +155,9 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void reservainicialPersonaNoEnLacolaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 3;
 
 		cola.reservaInicial(p);
 
@@ -160,7 +165,7 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void personaAAtenderCorrectoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -172,8 +177,7 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void atenderSiguienteCorrectoTest() {
-		fail("Quitar en implementacion");
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[1];
 		colaInicial[0] = p;
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
@@ -185,7 +189,7 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void amigosPorColarCorrectoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -196,7 +200,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void amigosPorColarPersonaNulaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -207,7 +211,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void amigosPorColarPersonaNoPreviamenteEnLaColaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 
@@ -216,18 +220,18 @@ public class ColaDeAmigosTest {
 
 	@Test
 	public void amigosColadosCorrectoNingunoColadoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		assertArrayEquals(colaInicial, cola.amigosColados(p));
+		assertArrayEquals(new Persona[0], cola.amigosColados(p));
 	}
 
 	@Test
 	public void amigosColadosCorrectoAlgunoColadoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -238,8 +242,8 @@ public class ColaDeAmigosTest {
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
-		amigos = new Persona[] { p2 };
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
+		p.addConocido(p2);
+		p.addAmigo(p2);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -251,7 +255,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void amigosColadosPersonaNulaAlgunoColadoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -275,7 +279,7 @@ public class ColaDeAmigosTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void amigosColadosPersonaNoEnLaColaAlgunoColadoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -293,10 +297,10 @@ public class ColaDeAmigosTest {
 
 		cola.amigosColados(p);
 	}
-	
+
 	@Test
 	public void colarseCorrectoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -307,8 +311,8 @@ public class ColaDeAmigosTest {
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
-		amigos = new Persona[] { p2 };
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
+		p.addConocido(p2);
+		p.addAmigo(p2);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -317,10 +321,10 @@ public class ColaDeAmigosTest {
 
 		assertEquals(p2, cola.getColaActual()[0]);
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void colarsePersonaNulaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -331,8 +335,8 @@ public class ColaDeAmigosTest {
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
-		amigos = new Persona[] { p2 };
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
+		p.addConocido(p2);
+		p.addAmigo(p2);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -340,10 +344,10 @@ public class ColaDeAmigosTest {
 		cola.colarse(null);
 
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void colarsePersonaYaEnLaColaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -354,8 +358,8 @@ public class ColaDeAmigosTest {
 		p2.addConocido(p);
 		p2.addAmigo(p);
 
-		amigos = new Persona[] { p2 };
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
+		p.addConocido(p2);
+		p.addAmigo(p2);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -363,10 +367,10 @@ public class ColaDeAmigosTest {
 		cola.colarse(p);
 
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void colarsePersonaSinAmigoEnLaColaTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -375,8 +379,8 @@ public class ColaDeAmigosTest {
 
 		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 
-		amigos = new Persona[] { p2 };
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
+		p.addConocido(p2);
+		p.addAmigo(p2);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
@@ -384,10 +388,10 @@ public class ColaDeAmigosTest {
 		cola.colarse(p2);
 
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void colarsePersonaSinQueNadieloConsidereAmigoTest() {
-		Persona[] colaInicial = new Persona[5];
+		Persona[] colaInicial = new Persona[0];
 
 		String nombre2 = "Manuel Pino";
 		int id2 = 87654321;
@@ -397,13 +401,176 @@ public class ColaDeAmigosTest {
 		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
 		p2.addConocido(p);
 		p2.addAmigo(p);
-		
-		p2 = new Persona(nombre, id, amigos, conocidos, 0);
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 		cola.colarse(p2);
 
+	}
+
+	@Test
+	public void isInColaCorrectoSiTest() {
+		Persona[] colaInicial = new Persona[1];
+		colaInicial[0] = p;
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		assertTrue(cola.isInCola(p));
+
+	}
+
+	@Test
+	public void isInColaCorrectoNoTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		assertFalse(cola.isInCola(p));
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void isInColaPersonaNullTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+
+		cola.isInCola(null);
+
+	}
+
+	@Test
+	public void personaQueConsidereAmigoParaColarCorrectoSiTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		p.addConocido(p2);
+		p.addAmigo(p2);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertTrue(cola.personaQueConsidereAmigoParaColar(p2));
+	}
+
+	@Test
+	public void personaQueConsidereAmigoParaColarCorrectoNoTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+
+		p.addConocido(p2);
+		p.addAmigo(p2);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertFalse(cola.personaQueConsidereAmigoParaColar(p2));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void personaQueConsidereAmigoParaColarPersonaNulaTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		p.addConocido(p2);
+		p.addAmigo(p2);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		cola.personaQueConsidereAmigoParaColar(null);
+	}
+	
+	@Test
+	public void amigoParaColarCorrectoSiTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		p.addConocido(p2);
+		p.addAmigo(p2);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertTrue(cola.amigoParaColar(p2));
+	}
+
+	@Test
+	public void amigoParaColarCorrectoNoTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		assertFalse(cola.amigoParaColar(p2));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void amigoParaColarPersonaNulaTest() {
+		Persona[] colaInicial = new Persona[0];
+
+		String nombre2 = "Manuel Pino";
+		int id2 = 87654321;
+		Persona[] amigos2 = new Persona[0];
+		Persona[] conocidos2 = new Persona[0];
+
+		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
+		p2.addConocido(p);
+		p2.addAmigo(p);
+
+		p.addConocido(p2);
+		p.addAmigo(p2);
+
+		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
+		int reserva = 3;
+		cola.pedirVez(p, reserva);
+
+		cola.amigoParaColar(null);
 	}
 }
