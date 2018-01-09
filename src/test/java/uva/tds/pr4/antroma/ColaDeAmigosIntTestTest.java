@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category(Integration.class)
-public class ColaDeAmigosIntTestTest implements Integration {
+public class ColaDeAmigosIntTestTest{
 
 	private String nombre;
 	private int id;
