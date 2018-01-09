@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.omg.Messaging.SyncScopeHelper;
 
-@Category(Unit.class)
+@Category(Sequence.class)
 public class ColaDeAmigosSeqTest {
 
 	private String nombre;
