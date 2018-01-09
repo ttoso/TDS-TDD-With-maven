@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category(Unit.class)
-public class ColaDeAmigosTest {
+public class ColaDeAmigosTest implements Unit {
 
 	private String nombre;
 	private int id;
