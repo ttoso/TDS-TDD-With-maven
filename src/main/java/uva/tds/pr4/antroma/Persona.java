@@ -92,7 +92,7 @@ public class Persona {
 
 		this.reservasIniciales = reservasIniciales;
 	}
-	
+
 	/**
 	 * Asigna el valor que se le pasa a reservasActuales.
 	 * 
@@ -122,9 +122,8 @@ public class Persona {
 				res[i] = amigos.get(i);
 			}
 			return res;
-		} else
-			return new Persona[0];
-
+		}
+		return new Persona[0];
 	}
 
 	/**
@@ -134,16 +133,37 @@ public class Persona {
 	 *         no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
-		Persona[] res = new Persona[conocidos.size()];
+		Persona[] res1 = new Persona[conocidos.size()];
+		Persona[] res2 = new Persona[amigos.size()];
 		if (!conocidos.isEmpty()) {
 			for (int i = 0; i < conocidos.size(); i++) {
-				res[i] = conocidos.get(i);
+				res1[i] = conocidos.get(i);
+			}
+		}
+		
+		if (!amigos.isEmpty()) {
+			for (int i = 0; i < amigos.size(); i++) {
+				res2[i] = amigos.get(i);
+			}
+		}
+		if (res1.length != 0 && res2.length != 0) {
+			Persona[] res = new Persona[res1.length + res2.length];
+			for (int i = 0; i < res1.length; i++) {
+				res[i] = res1[i];
+			}
+			for (int i = res1.length; i < res.length; i++) {
+				res[i] = res2[i-res1.length];
 			}
 			return res;
+		}else if (res1.length != 0 ) {
+			return res1;
+		}else if (res2.length != 0) {
+			return res2;
 		}
+		
 
-		else
-			return new Persona[0];
+		
+		return new Persona[0];
 
 	}
 
@@ -284,6 +304,7 @@ public class Persona {
 		if (isAmigo(p))
 			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
 
+		conocidos.remove(p);
 		amigos.add(p);
 	}
 
@@ -305,6 +326,11 @@ public class Persona {
 			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
 		amigos.remove(p);
+	}
+	
+	@Override
+	public String toString() {
+		return nombre;
 	}
 
 }
