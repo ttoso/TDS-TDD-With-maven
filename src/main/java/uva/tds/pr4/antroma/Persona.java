@@ -65,7 +65,15 @@ public class Persona {
 	}
 
 	private boolean elmNulo(String nombre, Persona[] amigos, Persona[] conocidos) {
-		if (nombre == null || amigos == null || conocidos == null) return true;
+		if (nombre == null){
+			return true;
+		}
+		if (amigos == null){
+			return true;
+		}
+		if (conocidos == null){
+			return true;
+		}
 		return false;
 	}
 
