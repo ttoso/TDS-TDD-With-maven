@@ -37,8 +37,10 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos, int reservas) {
-		if (nombre == null || nombre == "")
-			throw new IllegalArgumentException("El nombre no puede ser nulo ni cadena vacia");
+		if (nombre == null)
+			throw new IllegalArgumentException("El nombre no puede ser nulo");
+		if (nombre == "")
+			throw new IllegalArgumentException("El nombre no puede ser cadena vacia");
 		if (id <= 0)
 			throw new IllegalArgumentException("El id debe ser positivo");
 		if (amigos == null)
@@ -323,7 +325,8 @@ public class Persona {
 		if (!isAmigo(p))
 			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
-		amigos.remove(p);
+		
+		amigos.remove(amigos.indexOf(p));
 	}
 	
 	@Override
