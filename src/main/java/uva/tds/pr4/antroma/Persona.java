@@ -37,22 +37,18 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos, int reservas) {
-		if (nombre == null)
-			throw new IllegalArgumentException("El nombre no puede ser nulo");
+		if (elmNulo(nombre, amigos, conocidos))
+			throw new IllegalArgumentException("Ninguno de los atributos puede ser nulo");
 		if (nombre == "")
 			throw new IllegalArgumentException("El nombre no puede ser cadena vacia");
 		if (id <= 0)
 			throw new IllegalArgumentException("El id debe ser positivo");
-		if (amigos == null)
-			throw new IllegalArgumentException("Amigos no puede ser nulo");
-		if (conocidos == null)
-			throw new IllegalArgumentException("Conocidos no puede ser nulo");
 		if (reservas < 0)
 			throw new IllegalArgumentException("Reservas no puede ser negativo");
 		if (reservas > 10)
 			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
 		if (hasElementosNulos(amigos))
-			throw new IllegalArgumentException("Amigos no puede contener elmentos nulos");
+			throw new IllegalArgumentException("Amigos no puede contener elementos nulos");
 		if (hasElementosNulos(conocidos))
 			throw new IllegalArgumentException("Conocidos no puede contener elementos nulos");
 
@@ -66,6 +62,11 @@ public class Persona {
 		for (int i = 0; i < amigos.length; i++) {
 			this.amigos.add(amigos[i]);
 		}
+	}
+
+	private boolean elmNulo(String nombre, Persona[] amigos, Persona[] conocidos) {
+		if (nombre == null || amigos == null || conocidos == null) return true;
+		return false;
 	}
 
 	private boolean hasElementosNulos(Persona[] datos) {
