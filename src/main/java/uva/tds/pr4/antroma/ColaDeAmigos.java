@@ -203,7 +203,7 @@ public class ColaDeAmigos {
 		int numeroAmigos = p.getReservasIniciales() - p.getReservasActuales();
 		if (numeroAmigos > 0) {
 			Persona[] resultado = new Persona[numeroAmigos];
-			for (int i = numeroAmigos - 1; i >= 0; i--) {
+			for (int i = colaActual.indexOf(p)-1; i > colaActual.indexOf(p)-numeroAmigos-1; i--) {
 				resultado[i] = colaActual.get(colaActual.indexOf(p) - i - 1);
 			}
 			return resultado;
