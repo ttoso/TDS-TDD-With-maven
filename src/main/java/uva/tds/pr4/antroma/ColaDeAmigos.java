@@ -196,7 +196,7 @@ public class ColaDeAmigos {
 	 */
 	public Persona[] amigosColados(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nula");
+			throw new IllegalArgumentException("La persona introducida no puede ser nula");
 		if (!isInCola(p))
 			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
 

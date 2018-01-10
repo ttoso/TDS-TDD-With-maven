@@ -304,7 +304,7 @@ public class Persona {
 		if (isAmigo(p))
 			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
 
-		conocidos.remove(p);
+		conocidos.remove(conocidos.indexOf(p));
 		amigos.add(p);
 	}
 
