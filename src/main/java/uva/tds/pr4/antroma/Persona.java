@@ -37,22 +37,18 @@ public class Persona {
 	 *             los argumentos del constructor.
 	 */
 	public Persona(String nombre, int id, Persona[] amigos, Persona[] conocidos, int reservas) {
-		if (nombre == null)
-			throw new IllegalArgumentException("El nombre no puede ser nulo");
+		if (elmNulo(nombre, amigos, conocidos))
+			throw new IllegalArgumentException("Ninguno de los atributos puede ser nulo");
 		if (nombre == "")
 			throw new IllegalArgumentException("El nombre no puede ser cadena vacia");
 		if (id <= 0)
 			throw new IllegalArgumentException("El id debe ser positivo");
-		if (amigos == null)
-			throw new IllegalArgumentException("Amigos no puede ser nulo");
-		if (conocidos == null)
-			throw new IllegalArgumentException("Conocidos no puede ser nulo");
 		if (reservas < 0)
 			throw new IllegalArgumentException("Reservas no puede ser negativo");
 		if (reservas > 10)
 			throw new IllegalArgumentException("Reservas debe ser 10 como mucho");
 		if (hasElementosNulos(amigos))
-			throw new IllegalArgumentException("Amigos no puede contener elmentos nulos");
+			throw new IllegalArgumentException("Amigos no puede contener elementos nulos");
 		if (hasElementosNulos(conocidos))
 			throw new IllegalArgumentException("Conocidos no puede contener elementos nulos");
 
@@ -66,6 +62,17 @@ public class Persona {
 		for (int i = 0; i < amigos.length; i++) {
 			this.amigos.add(amigos[i]);
 		}
+	}
+
+	private boolean elmNulo(String nombre, Persona[] amigos, Persona[] conocidos) {
+		if (nombre == null) {
+			return true;
+		}
+		if (amigos == null) {
+			return true;
+		}
+		
+		return conocidos == null;
 	}
 
 	private boolean hasElementosNulos(Persona[] datos) {
@@ -92,7 +99,7 @@ public class Persona {
 
 		this.reservasIniciales = reservasIniciales;
 	}
-	
+
 	/**
 	 * Asigna el valor que se le pasa a reservasActuales.
 	 * 
@@ -122,9 +129,8 @@ public class Persona {
 				res[i] = amigos.get(i);
 			}
 			return res;
-		} else
-			return new Persona[0];
-
+		}
+		return new Persona[0];
 	}
 
 	/**
@@ -134,16 +140,32 @@ public class Persona {
 	 *         no aya ninguno.
 	 */
 	public Persona[] getConocidos() {
-		Persona[] res = new Persona[conocidos.size()];
+		Persona[] res1 = new Persona[conocidos.size()];
+		Persona[] res2 = new Persona[amigos.size()];
 		if (!conocidos.isEmpty()) {
 			for (int i = 0; i < conocidos.size(); i++) {
-				res[i] = conocidos.get(i);
+				res1[i] = conocidos.get(i);
 			}
-			return res;
 		}
 
-		else
-			return new Persona[0];
+		if (!amigos.isEmpty()) {
+			for (int i = 0; i < amigos.size(); i++) {
+				res2[i] = amigos.get(i);
+			}
+		}
+
+		if (res1.length != 0 && res2.length != 0) {
+			Persona[] res = new Persona[res1.length + res2.length];
+			for (int i = 0; i < res1.length; i++) {
+				res[i] = res1[i];
+			}
+			for (int i = res1.length; i < res.length; i++) {
+				res[i] = res2[i - res1.length];
+			}
+			return res;
+		} else if (res1.length != 0) {
+			return res1;
+		}else return res2;
 
 	}
 
@@ -284,6 +306,7 @@ public class Persona {
 		if (isAmigo(p))
 			throw new IllegalArgumentException("La persona no puede ser amigo previamente");
 
+		conocidos.remove(conocidos.indexOf(p));
 		amigos.add(p);
 	}
 
@@ -304,7 +327,8 @@ public class Persona {
 		if (!isAmigo(p))
 			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
-		amigos.remove(p);
+		amigos.remove(amigos.indexOf(p));
 	}
+
 
 }

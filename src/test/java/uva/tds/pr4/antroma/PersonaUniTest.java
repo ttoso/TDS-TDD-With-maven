@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category(Unit.class)
-public class PersonaTest {
+public class PersonaUniTest {
 
 	@Test
 	public void ConstructorCorrectoTest() {
@@ -306,7 +306,6 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[0];
 
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos, 3);
 
 		p.isAmigo(null);
 
@@ -350,7 +349,6 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[0];
 
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos, 3);
 
 		p.isConocido(null);
 
@@ -380,7 +378,6 @@ public class PersonaTest {
 		Persona[] conocidos = new Persona[0];
 
 		Persona p = new Persona(nombre, id, amigos, conocidos, 3);
-		Persona p2 = new Persona("Manuel pino", 87654321, amigos, conocidos, 3);
 
 		p.addConocido(null);
 	}

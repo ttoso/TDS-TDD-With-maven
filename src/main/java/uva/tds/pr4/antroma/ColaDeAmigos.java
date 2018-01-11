@@ -196,14 +196,14 @@ public class ColaDeAmigos {
 	 */
 	public Persona[] amigosColados(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nula");
+			throw new IllegalArgumentException("La persona introducida no puede ser nula");
 		if (!isInCola(p))
 			throw new IllegalArgumentException("La persona debe estar prevaimente en la cola");
 
 		int numeroAmigos = p.getReservasIniciales() - p.getReservasActuales();
 		if (numeroAmigos > 0) {
 			Persona[] resultado = new Persona[numeroAmigos];
-			for (int i = numeroAmigos - 1; i >= 0; i--) {
+			for (int i = colaActual.indexOf(p) - 1; i > colaActual.indexOf(p) - numeroAmigos - 1; i--) {
 				resultado[i] = colaActual.get(colaActual.indexOf(p) - i - 1);
 			}
 			return resultado;
@@ -226,7 +226,7 @@ public class ColaDeAmigos {
 	 */
 	public void colarse(Persona p) {
 		if (p == null)
-			throw new IllegalArgumentException("La persona no puede ser nula");
+			throw new IllegalArgumentException("La persona introducida no puede ser nula");
 		if (isInCola(p))
 			throw new IllegalArgumentException("La persona no debe estar prevaimente en la cola");
 		if (!amigoParaColar(p))
@@ -235,18 +235,21 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException(
 					"La persona debe tener una persona que la considere amigo y que pueda colar en la cola");
 
-		if (p.getAmigos() != null) {
-			for (int i = 0; i < colaActual.size(); i++) {
-				if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).isAmigo(p)
+		
+			int i = 0;
+			while(true) {
+				if (p.isAmigo(colaActual.get(i)) 
+						&& colaActual.get(i).isAmigo(p)
 						&& colaActual.get(i).getReservasActuales() > 0) {
-					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
+
 					p.setReservasActuales(0);
 					p.setReservasIniciales(0);
-					p.getAmigos()[i].setReservasActuales(p.getAmigos()[i].getReservasActuales() - 1);
+					colaActual.get(i).setReservasActuales(colaActual.get(i).getReservasActuales() - 1);
+					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
 					break;
 				}
+				i++;
 			}
-		}
 
 	}
 
@@ -267,8 +270,11 @@ public class ColaDeAmigos {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nula");
 
+		
 		for (int i = 0; i < colaActual.size(); i++) {
-			if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).getReservasActuales() > 0)
+			
+			if (p.isAmigo(colaActual.get(i)) 
+					&& colaActual.get(i).getReservasActuales() > 0)
 				return true;
 		}
 		return false;
@@ -293,7 +299,8 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException("La persona no puede ser nula");
 
 		for (int i = 0; i < colaActual.size(); i++) {
-			if (colaActual.get(i).isAmigo(p) && colaActual.get(i).getReservasActuales() > 0)
+			if (colaActual.get(i).isAmigo(p) 
+					&& colaActual.get(i).getReservasActuales() > 0)
 				return true;
 		}
 		return false;
