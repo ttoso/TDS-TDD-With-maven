@@ -40,11 +40,13 @@ public class ColaDeAmigosSeqTest {
 	public void colaDeAmigosSecuenciaTest() {
 		ColaDeAmigos c = new ColaDeAmigos(new Persona[0]);
 		Persona p1 = new Persona("Sergio Marcos", 18273645, new Persona[0], new Persona[0], 0);
+		Persona p2 = new Persona("Esteban Santos", 23147658, new Persona[0], new Persona[0], 0);
 		p1.addConocido(p);
 		p.addConocido(p1);
 		p1.addAmigo(p);
 		p.addAmigo(p1);
 		
+		c.pedirVez(p2, 0);
 		c.atenderSiguiente();
 		c.pedirVez(p, 2);
 		c.personaAAtender();

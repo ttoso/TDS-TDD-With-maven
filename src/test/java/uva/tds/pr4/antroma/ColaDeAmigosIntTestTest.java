@@ -372,27 +372,6 @@ public class ColaDeAmigosIntTestTest{
 
 		assertFalse(cola.personaQueConsidereAmigoParaColar(p2));
 	}
-	
-	@Test
-	public void personaQueConsidereAmigoParaColarCorrectoNoReservaTest() {
-		Persona[] colaInicial = new Persona[0];
-
-		String nombre2 = "Manuel Pino";
-		int id2 = 87654321;
-		Persona[] amigos2 = new Persona[0];
-		Persona[] conocidos2 = new Persona[0];
-
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
-
-		p.addConocido(p2);
-		p.addAmigo(p2);
-
-		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 0;
-		cola.pedirVez(p2, reserva);
-
-		assertFalse(cola.personaQueConsidereAmigoParaColar(p2));
-	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void personaQueConsidereAmigoParaColarPersonaNulaTest() {
