@@ -236,7 +236,8 @@ public class ColaDeAmigos {
 					"La persona debe tener una persona que la considere amigo y que pueda colar en la cola");
 
 			for (int i = 0; i < colaActual.size(); i++) {
-				if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).isAmigo(p)
+				if (p.isAmigo(colaActual.get(i)) 
+						&& colaActual.get(i).isAmigo(p)
 						&& colaActual.get(i).getReservasActuales() > 0) {
 
 					p.setReservasActuales(0);

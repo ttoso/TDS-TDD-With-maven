@@ -37,7 +37,7 @@ public class ColaDeAmigosSeqTest {
 	}
 	
 	@Test
-	public void colaDeAmigosSecuenciaTest() {
+	public void colaDeAmigosSecuencia1Test() {
 		ColaDeAmigos c = new ColaDeAmigos(new Persona[0]);
 		Persona p1 = new Persona("Sergio Marcos", 18273645, new Persona[0], new Persona[0], 0);
 		Persona p2 = new Persona("Esteban Santos", 23147658, new Persona[0], new Persona[0], 0);
@@ -59,5 +59,22 @@ public class ColaDeAmigosSeqTest {
 		c.amigoParaColar(p2);
 		c.atenderSiguiente();
 		c.getColaActual();
+	}
+	
+	@Test
+	public void colaDeAmigosSecuencia2Test() {
+		ColaDeAmigos c = new ColaDeAmigos(new Persona[0]);
+		Persona p1 = new Persona("Sergio Marcos", 18273645, new Persona[0], new Persona[0], 0);
+		Persona p2 = new Persona("Esteban Santos", 23147658, new Persona[0], new Persona[0], 0);
+		p1.addConocido(p);
+		p.addConocido(p1);
+		p1.addAmigo(p);
+		p.addAmigo(p1);
+		p2.addConocido(p1);
+		p2.addAmigo(p1);
+		p1.addConocido(p2);
+		p1.addAmigo(p2);
+		
+		c.pedirVez(p, 0);
 	}
 }
