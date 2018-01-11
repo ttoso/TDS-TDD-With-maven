@@ -77,7 +77,7 @@ public class ColaDeAmigosSeqTest {
 
 		c.pedirVez(p2, 3);
 		c.pedirVez(p3, 3);
-		c.pedirVez(p, 0);
+		c.pedirVez(p, 1);
 		c.colarse(p1);
 	}
 }
