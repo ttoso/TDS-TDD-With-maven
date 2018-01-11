@@ -389,7 +389,7 @@ public class ColaDeAmigosIntTestTest{
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
 		int reserva = 0;
-		cola.pedirVez(p, reserva);
+		cola.pedirVez(p2, reserva);
 
 		assertFalse(cola.personaQueConsidereAmigoParaColar(p2));
 	}
