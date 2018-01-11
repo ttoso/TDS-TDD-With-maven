@@ -73,8 +73,8 @@ public class ColaDeAmigosSeqTest {
 		p.addConocido(p1);
 		p1.addAmigo(p);
 		p.addAmigo(p1);
-		p.addConocido(p3);
-		p.addAmigo(p3);
+		p1.addConocido(p3);
+		p1.addAmigo(p3);
 		p4.addConocido(p1);
 		p1.addConocido(p4);
 		p4.addAmigo(p1);
