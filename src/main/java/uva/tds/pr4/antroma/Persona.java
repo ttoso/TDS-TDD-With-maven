@@ -68,12 +68,10 @@ public class Persona {
 		if (nombre == null){
 			return true;
 		}
-		if (amigos == null){
+		if (amigos == null || conocidos == null){
 			return true;
 		}
-		if (conocidos == null){
-			return true;
-		}else return false;
+		return false;
 	}
 
 	private boolean hasElementosNulos(Persona[] datos) {
@@ -154,6 +152,8 @@ public class Persona {
 				res2[i] = amigos.get(i);
 			}
 		}
+		
+		
 		if (res1.length != 0 && res2.length != 0) {
 			Persona[] res = new Persona[res1.length + res2.length];
 			for (int i = 0; i < res1.length; i++) {
