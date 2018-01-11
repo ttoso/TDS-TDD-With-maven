@@ -45,6 +45,7 @@ public class ColaDeAmigosSeqTest {
 		p1.addAmigo(p);
 		p.addAmigo(p1);
 		
+		c.atenderSiguiente();
 		c.pedirVez(p, 2);
 		c.personaAAtender();
 		c.reservaInicial(p);
