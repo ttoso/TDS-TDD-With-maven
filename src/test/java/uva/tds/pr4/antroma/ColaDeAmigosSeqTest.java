@@ -67,6 +67,7 @@ public class ColaDeAmigosSeqTest {
 		Persona p1 = new Persona("Sergio Marcos", 18273645, new Persona[0], new Persona[0], 0);
 		Persona p2 = new Persona("Esteban Santos", 23147658, new Persona[0], new Persona[0], 0);
 		Persona p3 = new Persona("Jose Romero", 11223344, new Persona[0], new Persona[0], 0);
+		Persona p4 = new Persona("Jaime Velasco", 13132424, new Persona[0], new Persona[0], 0);
 
 		p1.addConocido(p);
 		p.addConocido(p1);
@@ -74,10 +75,15 @@ public class ColaDeAmigosSeqTest {
 		p.addAmigo(p1);
 		p.addConocido(p3);
 		p.addAmigo(p3);
+		p4.addConocido(p1);
+		p1.addConocido(p4);
+		p4.addAmigo(p1);
+		p1.addAmigo(p4);
 
 		c.pedirVez(p2, 3);
 		c.pedirVez(p3, 3);
 		c.pedirVez(p, 1);
+		c.pedirVez(p4, 3);
 		c.colarse(p1);
 	}
 }
