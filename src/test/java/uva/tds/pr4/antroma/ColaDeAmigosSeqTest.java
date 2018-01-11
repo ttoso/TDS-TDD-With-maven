@@ -48,11 +48,11 @@ public class ColaDeAmigosSeqTest {
 		
 		c.atenderSiguiente();
 		c.pedirVez(p2, 0);
-		c.personaQueConsidereAmigoParaColar(p);
-		c.amigoParaColar(p);
+		c.atenderSiguiente();
 		c.pedirVez(p, 2);
 		c.personaAAtender();
 		c.reservaInicial(p);
+		c.colarse(p2);
 		c.colarse(p1);
 		c.atenderSiguiente();
 		c.getColaActual();
