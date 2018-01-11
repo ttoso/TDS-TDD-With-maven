@@ -52,7 +52,6 @@ public class ColaDeAmigosSeqTest {
 		c.pedirVez(p, 2);
 		c.personaAAtender();
 		c.reservaInicial(p);
-		c.colarse(p2);
 		c.colarse(p1);
 		c.atenderSiguiente();
 		c.getColaActual();
