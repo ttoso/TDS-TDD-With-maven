@@ -65,13 +65,14 @@ public class Persona {
 	}
 
 	private boolean elmNulo(String nombre, Persona[] amigos, Persona[] conocidos) {
-		if (nombre == null){
+		if (nombre == null) {
 			return true;
 		}
-		if (amigos == null || conocidos == null){
+		if (amigos == null) {
 			return true;
 		}
-		return false;
+		
+		return conocidos == null;
 	}
 
 	private boolean hasElementosNulos(Persona[] datos) {
@@ -146,32 +147,25 @@ public class Persona {
 				res1[i] = conocidos.get(i);
 			}
 		}
-		
+
 		if (!amigos.isEmpty()) {
 			for (int i = 0; i < amigos.size(); i++) {
 				res2[i] = amigos.get(i);
 			}
 		}
-		
-		
+
 		if (res1.length != 0 && res2.length != 0) {
 			Persona[] res = new Persona[res1.length + res2.length];
 			for (int i = 0; i < res1.length; i++) {
 				res[i] = res1[i];
 			}
 			for (int i = res1.length; i < res.length; i++) {
-				res[i] = res2[i-res1.length];
+				res[i] = res2[i - res1.length];
 			}
 			return res;
-		}else if (res1.length != 0 ) {
+		} else if (res1.length != 0) {
 			return res1;
-		}else if (res2.length != 0) {
-			return res2;
-		}
-		
-
-		
-		return new Persona[0];
+		}else return res2;
 
 	}
 
@@ -333,10 +327,9 @@ public class Persona {
 		if (!isAmigo(p))
 			throw new IllegalArgumentException("La persona debe ser amigo previamente");
 
-		
 		amigos.remove(amigos.indexOf(p));
 	}
-	
+
 	@Override
 	public String toString() {
 		return nombre;
