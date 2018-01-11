@@ -330,9 +330,5 @@ public class Persona {
 		amigos.remove(amigos.indexOf(p));
 	}
 
-	@Override
-	public String toString() {
-		return nombre;
-	}
 
 }
