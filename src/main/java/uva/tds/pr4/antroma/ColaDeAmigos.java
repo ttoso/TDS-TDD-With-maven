@@ -239,10 +239,11 @@ public class ColaDeAmigos {
 			for (int i = 0; i < colaActual.size(); i++) {
 				if (p.isAmigo(colaActual.get(i)) && colaActual.get(i).isAmigo(p)
 						&& colaActual.get(i).getReservasActuales() > 0) {
-					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
+					
 					p.setReservasActuales(0);
 					p.setReservasIniciales(0);
-					p.getAmigos()[i].setReservasActuales(p.getAmigos()[i].getReservasActuales() - 1);
+					colaActual.get(i).setReservasActuales(colaActual.get(i).getReservasActuales() - 1);
+					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
 					break;
 				}
 			}
