@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category(Unit.class)
-public class ColaDeAmigosUniTest{
+public class ColaDeAmigosUniTest {
 
 	private String nombre;
 	private int id;
@@ -95,63 +95,14 @@ public class ColaDeAmigosUniTest{
 	}
 
 	@Test
-	public void amigosColadosCorrectoNingunoColadoTest() {
-		Persona[] colaInicial = new Persona[0];
+	public void isInColaCorrectoSiTest() {
+		Persona[] colaInicial = new Persona[1];
+		colaInicial[0] = p;
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 3;
-		cola.pedirVez(p, reserva);
 
-		assertArrayEquals(new Persona[0], cola.amigosColados(p));
-	}
+		assertTrue(cola.isInCola(p));
 
-	@Test
-	public void amigosColadosCorrectoAlgunoColadoTest() {
-		Persona[] colaInicial = new Persona[0];
-
-		String nombre2 = "Manuel Pino";
-		int id2 = 87654321;
-		Persona[] amigos2 = new Persona[0];
-		Persona[] conocidos2 = new Persona[0];
-
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
-		p2.addConocido(p);
-		p2.addAmigo(p);
-
-		p.addConocido(p2);
-		p.addAmigo(p2);
-
-		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 3;
-		cola.pedirVez(p, reserva);
-		cola.colarse(p2);
-
-		assertArrayEquals(new Persona[] { p2 }, cola.amigosColados(p));
-	}
-	
-	@Test(expected= IllegalArgumentException.class)
-	public void amigosColadosPersonaNulaTest() {
-		Persona[] colaInicial = new Persona[0];
-
-		String nombre2 = "Manuel Pino";
-		int id2 = 87654321;
-		Persona[] amigos2 = new Persona[0];
-		Persona[] conocidos2 = new Persona[0];
-
-		Persona p2 = new Persona(nombre2, id2, amigos2, conocidos2, 0);
-		p2.addConocido(p);
-		p2.addAmigo(p);
-
-		p.addConocido(p2);
-		p.addAmigo(p2);
-
-		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
-		int reserva = 3;
-		cola.pedirVez(p, reserva);
-		cola.colarse(p2);
-
-
-	    cola.amigosColados(null);
 	}
 
 	@Test
@@ -174,5 +125,4 @@ public class ColaDeAmigosUniTest{
 
 	}
 
-	
 }

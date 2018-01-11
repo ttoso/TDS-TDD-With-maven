@@ -266,7 +266,9 @@ public class ColaDeAmigos {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nula");
 
+		
 		for (int i = 0; i < colaActual.size(); i++) {
+			
 			if (p.isAmigo(colaActual.get(i)) 
 					&& colaActual.get(i).getReservasActuales() > 0)
 				return true;
