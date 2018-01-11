@@ -129,7 +129,7 @@ public class ColaDeAmigosUniTest{
 		assertArrayEquals(new Persona[] { p2 }, cola.amigosColados(p));
 	}
 	
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void amigosColadosPersonaNulaTest() {
 		Persona[] colaInicial = new Persona[0];
 
