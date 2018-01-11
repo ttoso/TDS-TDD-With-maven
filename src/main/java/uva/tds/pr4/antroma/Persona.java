@@ -73,8 +73,7 @@ public class Persona {
 		}
 		if (conocidos == null){
 			return true;
-		}
-		return false;
+		}else return false;
 	}
 
 	private boolean hasElementosNulos(Persona[] datos) {
