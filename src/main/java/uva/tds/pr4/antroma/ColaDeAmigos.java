@@ -235,7 +235,9 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException(
 					"La persona debe tener una persona que la considere amigo y que pueda colar en la cola");
 
-			for (int i = 0; i < colaActual.size(); i++) {
+		
+			int i = 0;
+			while(true) {
 				if (p.isAmigo(colaActual.get(i)) 
 						&& colaActual.get(i).isAmigo(p)
 						&& colaActual.get(i).getReservasActuales() > 0) {
@@ -246,6 +248,7 @@ public class ColaDeAmigos {
 					colaActual.add(colaActual.indexOf(colaActual.get(i)), p);
 					break;
 				}
+				i++;
 			}
 
 	}
