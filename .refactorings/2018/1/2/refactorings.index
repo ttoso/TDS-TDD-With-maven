@@ -9,3 +9,7 @@
 1515471981847	Delete element
 1515471998961	Extract interface 'Integration'
 1515472929547	Delete element
+1515715880727	Rename method 'personaAAtender'
+1515715943564	Rename method 'amigosporColar'
+1515715999941	Rename method 'personaQueConsidereAmigoParaColar'
+1515716262052	Rename method 'amigoParaColar'

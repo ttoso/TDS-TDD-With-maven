@@ -71,7 +71,7 @@ public class ColaDeAmigosUniTest {
 	}
 
 	@Test
-	public void personaAAtenderCorrectoTest() {
+	public void siguientePersonaQueSeAtenderaCorrectoTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		ColaDeAmigos cola = new ColaDeAmigos(colaInicial);
@@ -79,7 +79,7 @@ public class ColaDeAmigosUniTest {
 
 		cola.pedirVez(p, reserva);
 
-		assertEquals(p, cola.personaAAtender());
+		assertEquals(p, cola.siguientePersonaQueSeAtendera());
 	}
 
 	@Test
@@ -91,7 +91,7 @@ public class ColaDeAmigosUniTest {
 
 		cola.atenderSiguiente();
 
-		assertNotEquals(p, cola.personaAAtender());
+		assertNotEquals(p, cola.siguientePersonaQueSeAtendera());
 	}
 
 	@Test

@@ -194,7 +194,7 @@ public class ColadeAmigosIsoTests {
 
 		cola.pedirVez(p, reserva);
 
-		assertEquals(reserva, cola.amigosporColar(p));
+		assertEquals(reserva, cola.amigosPorColar(p));
 		verify(p);
 	}
 
@@ -215,7 +215,7 @@ public class ColadeAmigosIsoTests {
 
 		cola.pedirVez(p, reserva);
 
-		cola.amigosporColar(null);
+		cola.amigosPorColar(null);
 		verify(p);
 	}
 
@@ -233,7 +233,7 @@ public class ColadeAmigosIsoTests {
 		expect(p.getReservasActuales()).andReturn((int) 3).once();
 		replay(p);
 
-		cola.amigosporColar(p);
+		cola.amigosPorColar(p);
 		verify(p);
 	}
 
@@ -561,7 +561,7 @@ public class ColadeAmigosIsoTests {
 	}
 	
 	@Test
-	public void personaQueConsidereAmigoParaColarCorrectoSiTest() {
+	public void amigoEnLaColaQuePuedaColarloCorrectoSiTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -580,13 +580,13 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		assertTrue(cola.personaQueConsidereAmigoParaColar(p2));
+		assertTrue(cola.amigoEnLaColaQuePuedaColarlo(p2));
 		verify(p);
 		verify(p2);
 	}
 	
 	@Test
-	public void personaQueConsidereAmigoParaColarCorrectoNoTest() {
+	public void amigoEnLaColaQuePuedaColarloCorrectoNoTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -604,13 +604,13 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		assertFalse(cola.personaQueConsidereAmigoParaColar(p2));
+		assertFalse(cola.amigoEnLaColaQuePuedaColarlo(p2));
 		verify(p);
 		verify(p2);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void personaQueConsidereAmigoParaColarPersonaNulaTest() {
+	public void amigoEnLaColaQuePuedaColarloPersonaNulaTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -629,13 +629,13 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		cola.personaQueConsidereAmigoParaColar(null);
+		cola.amigoEnLaColaQuePuedaColarlo(null);
 		verify(p);
 		verify(p2);
 	}
 	
 	@Test
-	public void amigoParaColarCorrectoSiTest() {
+	public void personaPorLaQueSeEsConsideradoAmigoParaColarSiTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -654,13 +654,13 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		assertTrue(cola.amigoParaColar(p2));
+		assertTrue(cola.personaPorLaQueSeEsConsideradoAmigoParaColar(p2));
 		verify(p);
 		verify(p2);
 	}
 	
 	@Test
-	public void amigoParaColarCorrectoNoTest() {
+	public void personaPorLaQueSeEsConsideradoAmigoParaColarCorrectoNoTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -678,13 +678,13 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		assertFalse(cola.amigoParaColar(p2));
+		assertFalse(cola.personaPorLaQueSeEsConsideradoAmigoParaColar(p2));
 		verify(p);
 		verify(p2);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void amigoParaColarPersonaNulaTest() {
+	public void personaPorLaQueSeEsConsideradoAmigoParaColarPersonaNulaTest() {
 		Persona[] colaInicial = new Persona[0];
 
 		p = createMock(Persona.class);
@@ -703,7 +703,7 @@ public class ColadeAmigosIsoTests {
 		int reserva = 3;
 		cola.pedirVez(p, reserva);
 
-		cola.amigoParaColar(null);
+		cola.personaPorLaQueSeEsConsideradoAmigoParaColar(null);
 		verify(p);
 		verify(p2);
 	}

@@ -142,7 +142,7 @@ public class ColaDeAmigos {
 	 * @return La persona que sera atendida primero, null en caso de que no
 	 *         halla nadie.
 	 */
-	public Persona personaAAtender() {
+	public Persona siguientePersonaQueSeAtendera() {
 		if (colaActual.isEmpty()) {
 			return null;
 		}
@@ -172,7 +172,7 @@ public class ColaDeAmigos {
 	 *             los argumentos del constructor.
 	 * @return un entero que es el numero de amigos por colar.
 	 */
-	public int amigosporColar(Persona p) {
+	public int amigosPorColar(Persona p) {
 		if (p == null)
 			throw new IllegalArgumentException("La persona proporcionada no puede ser nula");
 		if (!isInCola(p))
@@ -229,9 +229,9 @@ public class ColaDeAmigos {
 			throw new IllegalArgumentException("La persona introducida no puede ser nula");
 		if (isInCola(p))
 			throw new IllegalArgumentException("La persona no debe estar prevaimente en la cola");
-		if (!amigoParaColar(p))
+		if (!personaPorLaQueSeEsConsideradoAmigoParaColar(p))
 			throw new IllegalArgumentException("La persona debe tener un amigo que pueda colar en la cola");
-		if (!personaQueConsidereAmigoParaColar(p))
+		if (!amigoEnLaColaQuePuedaColarlo(p))
 			throw new IllegalArgumentException(
 					"La persona debe tener una persona que la considere amigo y que pueda colar en la cola");
 
@@ -266,7 +266,7 @@ public class ColaDeAmigos {
 	 * @return true en caso de que tenga al menos un amigo que pueda colarlo,
 	 *         false en caso contrario.
 	 */
-	public boolean personaQueConsidereAmigoParaColar(Persona p) {
+	public boolean amigoEnLaColaQuePuedaColarlo(Persona p) {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nula");
 
@@ -294,7 +294,7 @@ public class ColaDeAmigos {
 	 * @return true en caso de que tenga al menos un amigo que pueda colarlo,
 	 *         false en caso contrario.
 	 */
-	public boolean amigoParaColar(Persona p) {
+	public boolean personaPorLaQueSeEsConsideradoAmigoParaColar(Persona p) {
 		if (p == null)
 			throw new IllegalArgumentException("La persona no puede ser nula");
 
