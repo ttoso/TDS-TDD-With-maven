@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Implementacion simple de una persona con amigos y conocidos
  * 
- * @author toso
+ * @author antroma
  *
  */
 public class Persona {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Implementación simple de una cola para amigos
  * 
- * @author toso
+ * @author antroma
  *
  */
 public class ColaDeAmigos {
