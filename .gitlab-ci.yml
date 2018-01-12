@@ -65,8 +65,8 @@ pages:
 
 deploy:
   stage: deploy
-  - mkdir .m2
-  - cp /usr/share/maven/conf/settings.xml
+    - mkdir .m2
+    - cp /usr/share/maven/conf/settings.xml
   script:
     - mvn -$MAVEN_CLI_OPTS install
   only:
