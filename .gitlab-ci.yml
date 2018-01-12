@@ -62,3 +62,12 @@ pages:
     paths:
       - public
     expire_in: 30 days
+
+deploy:
+  stage: deploy
+  - mkdir .m2
+  - cp /usr/share/maven/conf/settings.xml
+  script:
+    - mvn -$MAVEN_CLI_OPTS install
+  only:
+    - master
